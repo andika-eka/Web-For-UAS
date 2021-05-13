@@ -2,14 +2,8 @@
 
 @section('content')
 <main>
-    <div class="container-fluid">
-        <div class="card mb-4">
-            <div class="card-header">
-                <i class="fas fa-table mr-1"></i>
-                daftar sewa
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
+    
+                <div class="table-responsive" style="padding:30px;">
                 @if(count($sewa)>0)
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -65,8 +59,6 @@
                     <p>data tidak ditemukan</p>
                     @endif
                 </div>
-            </div>
-        </div>
-    </div>
+           
 </main>
 @endsection
