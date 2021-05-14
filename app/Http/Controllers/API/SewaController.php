@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
@@ -7,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\sewa;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
 
 class SewaController extends Controller
 {
@@ -17,11 +17,9 @@ class SewaController extends Controller
      */
     public function index()
     {
-        $title = "daftar sewa";
-        $data = sewa::all();
-        return view('dashboard.sewa')
-        ->with('title', $title)
-        ->with("sewa", $data);
+        $data['title'] = "daftar sewa";
+        $data['sewa'] = sewa::get_api()->paginate(10);
+        return response()->json($data);
     }
 
     /**
@@ -32,8 +30,8 @@ class SewaController extends Controller
     public function create()
     {
         //
-        $title = 'daftarkan penyewa';
-        return view('dashboard.create')->with('title', $title);
+        $data['title']= 'daftarkan penyewa';
+        return response()->json($data);
     }
 
     /**

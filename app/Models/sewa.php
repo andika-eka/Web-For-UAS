@@ -18,7 +18,14 @@ class sewa extends Model
     }
     static function get_api(){
         $result = DB::table('sewas')
+        ->select("*" ,'sewas.id AS S_id')//temporary solution
         ->join('users', "sewas.user_id", "=", "users.id");
         return $result;
+
+        /* id for sewas table need to be aliased because of conflict with user id
+        long term solution maybe is just to repair the database (which is too much work)
+        soo yaa... YOLO*/
+
+        //ps other model might have the same problem
     }
 }

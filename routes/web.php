@@ -18,13 +18,17 @@ use App\Http\Controllers\BayarController;
 
 Route::get('/', [PagesController::class, 'home']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboardx', function () {
+Route::middleware(['auth:sanctum','verified'])->get('/dashboardx',function (){
     return view('dashboard');
 })->name('dashboard');
 
 Route::get('/dashboard',[PagesController::class, 'dashboard']);
 Route::resource('sewa', SewaController::class);
 Route::resource('pembayaran', BayarController::class);
+
+Route::get('vue/{any}', function () {
+    return view('app');
+})->where('any', '.*')->middleware(['auth']);
 
 
 /*

@@ -12,7 +12,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
-                       
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">hunian</a></li>
                         <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pesan">booking</a></li> -->
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#staf">staf</a></li>
@@ -21,8 +20,6 @@
                 </div>
             </div>
         </nav>
-           
-      
 <!-- Masthead-->
 <header class="masthead">
     <div class="container">
@@ -31,7 +28,7 @@
                 @auth
                 <div class="masthead-subheading" style="text-shadow: 2px 2px black;">Instant kos</div>
                 <div class="masthead-heading text-uppercase"  style="text-shadow: 2px 2px black;">Halo, {{ Auth::user()->name }}</div>
-                    <a class="btn btn-primary btn-xl text-uppercase " href="{{ url('/dashboardx') }}">Dashboard</a>
+                    <a class="btn btn-primary btn-xl text-uppercase " href="{{ url('/dashboard') }}">Dashboard</a>
                     
                 @else
                 <div class="masthead-subheading" style="text-shadow: 2px 2px black;">Instant kos</div>
