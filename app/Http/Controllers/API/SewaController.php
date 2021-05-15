@@ -75,21 +75,21 @@ class SewaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    // public function show($id)
+    // {
         
-        $data = sewa::find($id);
+    //     $data = sewa::find($id);
 
-        $user = user::find($data->user_id);
-        $userUpdate = user::find($data->update_user_id);
+    //     $user = user::find($data->user_id);
+    //     $userUpdate = user::find($data->update_user_id);
 
-        $title = $data->nama;
-        return view('dashboard.detail')
-        ->with('title', $title)
-        ->with("sewa", $data)
-        ->with('user', $user)
-        ->with('update', $userUpdate);
-    }
+    //     $title = $data->nama;
+    //     return view('dashboard.detail')
+    //     ->with('title', $title)
+    //     ->with("sewa", $data)
+    //     ->with('user', $user)
+    //     ->with('update', $userUpdate);
+    // }//just use edit
 
     /**
      * Show the form for editing the specified resource.
@@ -100,14 +100,8 @@ class SewaController extends Controller
     public function edit($id)
     {
         
-        $data = sewa::find($id);
-        if(!$data){
-            abort(404);
-        }
-        $title = $data->nama;
-        return view('dashboard.edit')
-        ->with('title', $title)
-        ->with('sewa', $data) ;
+        $data = sewa::get_api()->where('sewas.id',$id)->first();
+        return response()->json($data);
     }
     
 

@@ -10,8 +10,8 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </router-link>
-                            <div class="sb-sidenav-menu-heading">penyawan</div>
-                            <router-link class="nav-link" to="/vue/sewaList">
+                            <div class="sb-sidenav-menu-heading">penyewa</div>
+                            <router-link class="nav-link" to="/vue/sewa">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 daftar sewa
                             </router-link>

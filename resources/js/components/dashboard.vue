@@ -21,9 +21,8 @@
                         <div class="card-body text-primary text-center">
                             <h2 class="card-title "> jumlah penyawa here</h2>
                             <hr>
-                            <a type="button" class="btn btn-outline-primary" href="sewa/create "> Daftarkan Penyewa</a>
-                            <a type="button" class="btn btn-outline-primary" href="pembayaran/create "> buat
-                                pembayaran</a>
+                            <router-link type="button" class="btn btn-outline-primary" to="/vue/sewa/create"> Daftarkan Penyewa</router-link>
+                            <router-link type="button" class="btn btn-outline-primary" to="/vue/pembayaran/create"> buat pembayaran</router-link>
                         </div>
                     </div>
                 </div>
