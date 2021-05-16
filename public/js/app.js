@@ -1974,7 +1974,143 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      sewa: {},
+      msg: '',
+      s: ''
+    };
+  },
+  created: function created() {
+    this.details();
+  },
+  methods: {
+    details: function details() {
+      var _this = this;
+
+      this.axios.get('/api/sewa/' + this.$route.params.id).then(function (response) {
+        _this.sewa = response.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -2042,103 +2178,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      sewa: {},
+      msg: '',
+      s: ''
+    };
+  },
+  created: function created() {
+    this.table();
+  },
+  methods: {
+    table: function table() {
+      var _this = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.axios.get('/api/sewa?page=' + page + '&s=' + this.s).then(function (response) {
+        _this.sewa = response.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -43050,14 +43111,175 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v("datail penyewa")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-lg-7" }, [
+          _c(
+            "div",
+            { staticClass: "card shadow-lg border-0 rounded-lg mt-5" },
+            [
+              _c("div", { staticClass: "card-header" }, [
+                _c("h3", { staticClass: "font-weight-light my-4" }, [
+                  _vm._v("No unit " + _vm._s(_vm.sewa.no_unit))
+                ]),
+                _vm._v(" "),
+                _c("table", [
+                  _c("tr", [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("td", [_c("h6", [_vm._v(": " + _vm._s(_vm.sewa.name))])])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", [_vm._v("indenfitas")]),
+                _vm._v(" "),
+                _c("table", { staticStyle: { width: "100%" } }, [
+                  _c("tr", [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("td", [_c("h6", [_vm._v(": " + _vm._s(_vm.sewa.nama))])])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("td", [_c("h6", [_vm._v(": " + _vm._s(_vm.sewa.NIK))])])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("h4", [_vm._v("contact")]),
+                _vm._v(" "),
+                _c("table", { staticStyle: { width: "100%" } }, [
+                  _c("tr", [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.email))])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("td", [_c("h6", [_vm._v(": " + _vm._s(_vm.sewa.tlp))])])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("h4", [_vm._v("kontrak:")]),
+                _vm._v(" "),
+                _c("table", { staticStyle: { width: "100%" } }, [
+                  _c("tr", [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c("td", [_c("h6", [_vm._v(": " + _vm._s(_vm.sewa.dari))])])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.sampai))])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("h6", [_vm._v(": Rp. " + _vm._s(_vm.sewa.harga))])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("h4", [_vm._v("keterangan:")]),
+                _vm._v(" "),
+                _c("h6", [_vm._v(" " + _vm._s(_vm.sewa.keterangan))]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("a", { staticClass: "btn btn-primary btn-block" }, [
+                  _vm._v("Edit")
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger btn-block",
+                    attrs: { type: "submit", name: "delete" }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer text-center" })
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("datail penyewa")])])
+    return _c("td", [_c("h6", [_vm._v("dibuat oleh")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("nama ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("NIK ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("E-mail ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("no tlp ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("dari ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("sampai ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("harga")])])
   }
 ]
 render._withStripped = true
@@ -43082,17 +43304,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", [_vm._v("table penyewa")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "table-responsive" }, [
+  return _c("div", [
+    _c("h1", { staticStyle: {} }, [_vm._v("table penyewa")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "table-responsive", staticStyle: { padding: "20px" } },
+      [
         _c(
           "table",
           {
@@ -43100,245 +43318,114 @@ var staticRenderFns = [
             attrs: { id: "dataTable", width: "100%", cellspacing: "0" }
           },
           [
-            _c("thead", [
-              _c("tr", [
-                _c("th", [_vm._v("id")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("nama")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("no unit")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("dari")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("sampai")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("harga")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("status")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("-")])
-              ])
-            ]),
+            _vm._m(0),
             _vm._v(" "),
-            _c("tfoot", [
-              _c("tr", [
-                _c("th", [_vm._v("id")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("nama")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("no unit")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("dari")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("sampai")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("harga")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("status")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("-")])
-              ])
-            ]),
+            _vm._m(1),
             _vm._v(" "),
-            _c("tbody", [
-              _c("tr", [
-                _c("td", [_vm._v("Sakura Yamamoto")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Support Engineer")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Tokyo")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("37")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2009/08/19")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$139,575")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Thor Walton")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Developer")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("New York")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("61")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2013/08/11")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$98,540")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Finn Camacho")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Support Engineer")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("San Francisco")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("47")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2009/07/07")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$87,500")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Serge Baldwin")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Data Coordinator")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Singapore")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("64")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2012/04/09")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$138,575")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Zenaida Frank")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Software Engineer")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("New York")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("63")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2010/01/04")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$125,250")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Zorita Serrano")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Software Engineer")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("San Francisco")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("56")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2012/06/01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$115,000")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Jennifer Acosta")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Junior Javascript Developer")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edinburgh")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("43")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2013/02/01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$75,650")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Cara Stevens")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Sales Assistant")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("New York")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("46")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2011/12/06")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$145,600")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Hermione Butler")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Regional Director")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("London")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("47")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2011/03/21")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$356,250")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Lael Greer")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Systems Administrator")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("London")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("21")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2009/02/27")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$103,500")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Jonas Alexander")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Developer")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("San Francisco")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("30")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2010/07/14")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$86,500")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Shad Decker")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Regional Director")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edinburgh")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("51")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2008/11/13")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$183,000")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Michael Bruce")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Javascript Developer")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Singapore")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("29")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2011/06/27")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$183,000")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Donna Snider")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Customer Support")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("New York")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("27")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2011/01/25")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$112,000")])
-              ])
-            ])
+            _c(
+              "tbody",
+              _vm._l(_vm.sewa.sewa.data, function(item, S_id) {
+                return _c("tr", { key: S_id }, [
+                  _c("td", [_vm._v(_vm._s(item.S_id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.nama))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.no_unit))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.dari))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.sampai))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.harga))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("status entah")]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "badge rounded-pill bg-primary",
+                          attrs: {
+                            to: {
+                              name: "SewaDetails",
+                              params: { id: item.S_id }
+                            }
+                          }
+                        },
+                        [_vm._v("details")]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              }),
+              0
+            )
           ]
+        ),
+        _vm._v(" "),
+        _c(
+          "pagination",
+          {
+            staticClass: "justify-center py-2",
+            attrs: { data: _vm.sewa },
+            on: { "pagination-change-page": _vm.table }
+          },
+          [_vm._v("hahah")]
         )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("id")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("nama")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("no unit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("dari")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("sampai")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("harga")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("-")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tfoot", [
+      _c("tr", [
+        _c("th", [_vm._v("id")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("nama")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("no unit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("dari")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("sampai")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("harga")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("-")])
       ])
     ])
   }

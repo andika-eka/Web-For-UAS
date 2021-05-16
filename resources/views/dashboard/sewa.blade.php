@@ -31,7 +31,7 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                         @foreach($sewa as $Sewa)   
+                        @foreach($sewa as $Sewa)   
                             <tr>
                                 <td>{{$Sewa->id}}</td>
                                 <td>{{$Sewa->nama}}</td>
@@ -52,13 +52,12 @@
                                 </td>
                                 <td><a class="badge rounded-pill bg-primary" href="sewa/{{$Sewa->id}} ">details</a></td>
                             </tr>
-                         @endforeach   
+                        @endforeach   
                         </tbody>
                     </table>
                     @else
                     <p>data tidak ditemukan</p>
                     @endif
                 </div>
-           
-</main>
+           </main>
 @endsection
