@@ -7,7 +7,6 @@ use App\Models\sewa;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-
 class SewaController extends Controller
 {
     /**
