@@ -8,7 +8,7 @@
                     <div class="card bg-success " style=" height :120px;">
                         <div class="card-header">pendapatan</div>
                         <div class="card-body text-center">
-                            <h2 class="card-title ">jumlah pendapatan</h2>
+                            <h2 class="card-title ">Rp. {{res.rev}}</h2>
                         </div>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                     <div class="card border-primary mb-3" style=" height :200px;">
                         <div class="card-header">jumlah penyewa</div>
                         <div class="card-body text-primary text-center">
-                            <h2 class="card-title "> jumlah penyawa here</h2>
+                            <h2 class="card-title "> {{res.Jum_sewa}}</h2>
                             <hr>
                             <router-link type="button" class="btn btn-outline-primary" to="/vue/sewa/create"> Daftarkan Penyewa</router-link>
                             <router-link type="button" class="btn btn-outline-primary" to="/vue/pembayaran/create"> buat pembayaran</router-link>
@@ -39,7 +39,22 @@
 
 <script>
     export default {
-
+    data() {
+            return {
+                res: {},
+                }
+        },
+    created() {
+            this.display();
+    },
+    methods: {
+            display(){
+                this
+                .axios
+                .get("/api/dashboard")
+                .then(response => {this.res = response.data});
+            },
+        }
     }
 
 </script>

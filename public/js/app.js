@@ -1996,6 +1996,148 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -2072,7 +2214,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      res: {}
+    };
+  },
+  created: function created() {
+    this.display();
+  },
+  methods: {
+    display: function display() {
+      var _this = this;
+
+      this.axios.get("/api/dashboard").then(function (response) {
+        _this.res = response.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -42929,7 +43089,258 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("table penyewa")])])
+    return _c("div", [
+      _c("h1", [_vm._v("table penyewa")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          {
+            staticClass: "table table-bordered",
+            attrs: { id: "dataTable", width: "100%", cellspacing: "0" }
+          },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("id")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("nama")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("no unit")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("dari")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("sampai")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("harga")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("status")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("-")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tfoot", [
+              _c("tr", [
+                _c("th", [_vm._v("id")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("nama")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("no unit")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("dari")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("sampai")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("harga")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("status")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("-")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c("td", [_vm._v("Sakura Yamamoto")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Support Engineer")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Tokyo")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("37")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2009/08/19")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$139,575")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Thor Walton")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Developer")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("New York")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("61")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2013/08/11")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$98,540")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Finn Camacho")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Support Engineer")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("San Francisco")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("47")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2009/07/07")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$87,500")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Serge Baldwin")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Data Coordinator")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Singapore")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("64")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2012/04/09")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$138,575")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Zenaida Frank")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Software Engineer")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("New York")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("63")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2010/01/04")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$125,250")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Zorita Serrano")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Software Engineer")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("San Francisco")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("56")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2012/06/01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$115,000")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Jennifer Acosta")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Junior Javascript Developer")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Edinburgh")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("43")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2013/02/01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$75,650")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Cara Stevens")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Sales Assistant")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("New York")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("46")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2011/12/06")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$145,600")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Hermione Butler")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Regional Director")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("London")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("47")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2011/03/21")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$356,250")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Lael Greer")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Systems Administrator")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("London")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("21")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2009/02/27")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$103,500")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Jonas Alexander")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Developer")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("San Francisco")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("30")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2010/07/14")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$86,500")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Shad Decker")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Regional Director")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Edinburgh")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("51")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2008/11/13")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$183,000")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Michael Bruce")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Javascript Developer")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Singapore")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("29")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2011/06/27")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$183,000")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Donna Snider")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Customer Support")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("New York")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("27")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2011/01/25")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$112,000")])
+              ])
+            ])
+          ]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -42992,7 +43403,35 @@ var render = function() {
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          {
+            staticClass: "container",
+            staticStyle: { color: "white", padding: "30px" }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "card bg-success ",
+                staticStyle: { height: "120px" }
+              },
+              [
+                _c("div", { staticClass: "card-header" }, [
+                  _vm._v("pendapatan")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body text-center" }, [
+                  _c("h2", { staticClass: "card-title " }, [
+                    _vm._v("Rp. " + _vm._s(_vm.res.rev))
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c(
@@ -43015,7 +43454,7 @@ var render = function() {
                   { staticClass: "card-body text-primary text-center" },
                   [
                     _c("h2", { staticClass: "card-title " }, [
-                      _vm._v(" jumlah penyawa here")
+                      _vm._v(" " + _vm._s(_vm.res.Jum_sewa))
                     ]),
                     _vm._v(" "),
                     _c("hr"),
@@ -43050,40 +43489,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        {
-          staticClass: "container",
-          staticStyle: { color: "white", padding: "30px" }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "card bg-success ",
-              staticStyle: { height: "120px" }
-            },
-            [
-              _c("div", { staticClass: "card-header" }, [_vm._v("pendapatan")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body text-center" }, [
-                _c("h2", { staticClass: "card-title " }, [
-                  _vm._v("jumlah pendapatan")
-                ])
-              ])
-            ]
-          )
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

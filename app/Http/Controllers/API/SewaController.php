@@ -42,31 +42,49 @@ class SewaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $this->validate($request, [
-            'nama' => 'required',
-            'NIK' => 'required',
-            'tlp' => 'required',
-            'no_unit' => 'required',
-            'dari' => 'required|before:sampai',
-            'sampai' => 'required',
-            'harga' => 'required'
+     /*check your fucking request json
+     could save you tons of headache
+                    -me who an idiot
+     */  
+        $validasi = $this->validate($request, [
+            'nama'          => 'required',
+            'NIK'           => 'required',
+            'tlp'           => 'required',
+            'no_unit'       => 'required',
+            'dari'          => 'required|date|before:sampai',
+            'sampai'        => 'required|date',
+            'harga'         => 'required|numeric|min:50000',
+           
         ]);
-        sewa::create([
-            'nama' => request('nama'),
-            'NIK' => request('NIK'),
-            'tlp' => request('tlp'),
-            'email' => request('email'),
-            'dari' => request('dari'),
-            'sampai' => request('sampai'),
-            'no_unit' => request('no_unit'),
-            'harga' => request('harga'),
-            'user_id' =>Auth::id(),
-            'update_user_id' =>Auth::id(),
-            
-            'keterangan' => request('keterangan'),
-        ]);
-        return redirect('/sewa')->with('success', 'data saved');
+
+        try{
+            $response = sewa::create([
+                'nama' => request('nama'),
+                'NIK' => request('NIK'),
+                'tlp' => request('tlp'),
+                'email' => request('email'),
+                'dari' => request('dari'),
+                'sampai' => request('sampai'),
+                'no_unit' => request('no_unit'),
+                'harga' => request('harga'),
+                'user_id' =>1,//major problem
+                'update_user_id' =>1,
+                'keterangan' => request('keterangan'),
+            ]);
+
+     
+            return response()->json([
+                'success' => true,
+                'notif'=>'penyewa berhasil di daftarkan',                
+            ]);
+        }catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'notif'=>'Error',               
+            ], 422);
+        } 
+
+       
     }
 
     /**
@@ -75,21 +93,13 @@ class SewaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    // {
+     public function show($id)
+     {
         
-    //     $data = sewa::find($id);
-
-    //     $user = user::find($data->user_id);
-    //     $userUpdate = user::find($data->update_user_id);
-
-    //     $title = $data->nama;
-    //     return view('dashboard.detail')
-    //     ->with('title', $title)
-    //     ->with("sewa", $data)
-    //     ->with('user', $user)
-    //     ->with('update', $userUpdate);
-    // }//just use edit
+         // this api also can be called for sewa edit
+        $data = sewa::get_api()->where('sewas.id',$id)->first();
+        return response()->json($data);
+    }//just use edit
 
     /**
      * Show the form for editing the specified resource.
@@ -97,12 +107,12 @@ class SewaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        
-        $data = sewa::get_api()->where('sewas.id',$id)->first();
-        return response()->json($data);
-    }
+    // public function edit($id)
+    // {
+    //     // this api also can be called for sewa detail
+    //     $data = sewa::get_api()->where('sewas.id',$id)->first();
+    //     return response()->json($data);
+    // }
     
 
     /**
@@ -115,31 +125,41 @@ class SewaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $Sewa = sewa::find($id);
-        $this->validate($request, [
-            'nama' => 'required',
-            'NIK' => 'required',
-            'tlp' => 'required',
-            'no_unit' => 'required',
-            'dari' => 'required',
-            'sampai' => 'required',
-            'harga' => 'required'
+       
+        $validasi = $this->validate($request, [
+            'nama'          => 'required',
+            'NIK'           => 'required',
+            'tlp'           => 'required',
+            'no_unit'       => 'required',
+            'dari'          => 'required|date|before:sampai',
+            'sampai'        => 'required|date',
+            'harga'         => 'required|numeric|min:50000',
+           
         ]);
 
-        $Sewa->nama = $request->nama;
-        $Sewa->NIK = $request->NIK;
-        $Sewa->tlp = $request->tlp;
-        $Sewa->email = $request->email;
-        $Sewa->dari = $request->dari;
-        $Sewa->sampai = $request->sampai;
-        $Sewa->no_unit = $request->no_unit;
-        $Sewa->harga = $request->harga;
-        $Sewa->keterangan = $request->keterangan;
-        $Sewa->update_user_id = Auth::id();
-        $Sewa->save();    
-
-        return redirect('/sewa')->with('success', 'data saved');
-
+        try{
+            $Sewa = sewa::find($id);
+            $Sewa->nama = $request->nama;
+            $Sewa->NIK = $request->NIK;
+            $Sewa->tlp = $request->tlp;
+            $Sewa->email = $request->email;
+            $Sewa->dari = $request->dari;
+            $Sewa->sampai = $request->sampai;
+            $Sewa->no_unit = $request->no_unit;
+            $Sewa->harga = $request->harga;
+            $Sewa->keterangan = $request->keterangan;
+            $Sewa->update_user_id = 2;
+            $Sewa->save();    
+            return response()->json([
+                'success' => true,
+                'notif'=>'berhasil update data',                
+            ]);
+        }catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'notif'=>'Error',               
+            ], 422);
+        } 
     }
 
     /**
@@ -150,9 +170,18 @@ class SewaController extends Controller
      */
     public function destroy($id)
     {
-        $data = sewa::find($id);       //cari id yang dipencet
-        $data-> delete();                  //delete id tersebut
-
-        return redirect('/sewa')->with('success', 'data deleted');
+        try{
+            $data = sewa::find($id);       //cari id yang dipencet
+            $data-> delete();                  //delete id tersebut
+            return response()->json([
+                'success' => true,
+                'notif'=>'berhasil delete data',                
+            ]);
+        }catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'notif'=>'Error',               
+            ], 422);
+        } 
     }
 }

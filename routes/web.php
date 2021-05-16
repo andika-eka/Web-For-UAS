@@ -18,11 +18,13 @@ use App\Http\Controllers\BayarController;
 
 Route::get('/', [PagesController::class, 'home']);
 
+//MAGIC, DO NOT TOUCH
 Route::middleware(['auth:sanctum','verified'])->get('/dashboardx',function (){
     return view('dashboard');
 })->name('dashboard');
-
 Route::get('/dashboard',[PagesController::class, 'dashboard']);
+
+
 Route::resource('sewa', SewaController::class);
 Route::resource('pembayaran', BayarController::class);
 
