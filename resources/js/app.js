@@ -11,6 +11,12 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 import App from './App.vue';
+import { Form, HasError, AlertError } from 'vform'
+window.Form = Form;
+
+let Fire = new Vue();
+window.Fire = Fire;
+
 import VueAxios from 'vue-axios';
 import VueRouter from 'vue-router';
 import axios from 'axios';

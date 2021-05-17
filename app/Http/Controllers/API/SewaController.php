@@ -17,7 +17,7 @@ class SewaController extends Controller
     public function index()
     {
         $data['title'] = "daftar sewa";
-        $data['sewa'] = sewa::get_api()->paginate(5);
+        $data['sewa'] = sewa::get_api()->paginate(100);
         return response()->json($data);
     }
 

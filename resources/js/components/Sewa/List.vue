@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 style="text-">table penyewa</h1>
+        <h1 style="text-align: center;">Table penyewa</h1> <hr>
         <div class="table-responsive" style="padding: 20px">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -11,7 +11,6 @@
                         <th>dari</th>
                         <th>sampai</th>
                         <th>harga</th>
-                        <th>status</th>
                         <th>-</th>
                     </tr>
                 </thead>
@@ -23,7 +22,6 @@
                         <th>dari</th>
                         <th>sampai</th>
                         <th>harga</th>
-                        <th>status</th>
                         <th>-</th>
                     </tr>
                 </tfoot>
@@ -35,7 +33,7 @@
                         <td>{{ item.dari }}</td>
                         <td>{{ item.sampai }}</td>
                         <td>{{ item.harga }}</td>
-                        <td>status entah</td>
+                
                         <td>
                             <router-link :to="{name: 'SewaDetails', params: { id: item.S_id }}"
                                 class="badge rounded-pill bg-primary">details</router-link>

@@ -1,13 +1,127 @@
 <template>
     <div>
-        <h1>create penyewa</h1>
-        
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                        <div class="card-header">
+                            <h3 class="font-weight-light my-4">Daftarkan Penyewa</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class=" form-horizontal" @submit.prevent="saveData()">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='nama'>Nama:</label>
+                                    <div class="col">
+                                        <input type="text" class="form-control" id='nama' v-model="form.nama">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='NIK'>NIK:</label>
+                                    <div class="col">
+                                        <input type="text" class="form-control" id='NIK' v-model="form.NIK">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='email'>E -mail:</label>
+                                    <div class="col">
+                                        <input type="email" class="form-control" id='email' v-model="form.email">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='tlp'>No tlp:</label>
+                                    <div class="col">
+                                        <input type="text" class="form-control" id='tlp' v-model="form.tlp">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='no_unit'>No unit:</label>
+                                    <div class="col ">
+                                        <input type="number" class="form-control" id='no_unit' v-model="form.no_unit"
+                                            min="1" max="300">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='harga'>harga:</label>
+                                    <div class="col ">
+                                        <input type="number" class="form-control" id='harga' v-model="form.harga"
+                                            min="50000" max="10000000">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='dari'>dari</label>
+                                    <div class="col ">
+                                        <input type="date" class="form-control" id='dari' v-model="form.dari">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='sampai'>sampai</label>
+                                    <div class="col ">
+                                        <input type="date" class="form-control" id='sampai' v-model="form.sampai">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='keterangan'>keterangan:</label>
+                                    <div class="col">
+                                        <input type="text" class="form-control" id='keterangan'
+                                            v-model="form.keterangan">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button type="submit" class="btn btn-primary" name='Create'>Create</button>
+                                        <router-link to="/vue/dashboard" class="btn btn-secondary" name='cancel'>cancel
+                                        </router-link>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="card-footer text-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     export default {
+        data() {
+            return {
+                form: new Form({
+                    nama: "",
+                    NIK: "",
+                    email: "",
+                    no_unit: "",
+                    tlp: "",
+                    harga: "",
+                    dari: "",
+                    sampai: "",
+                    keterangan: ""
+                })
+            }
+        },
+        methods: {
+            saveData() {
+                this.form.post('/api/sewa')
+                    .then(this.$router.push({
+                        path: '/vue/sewa'
+                    }))
+                    .catch();
 
+            }
+        }
     }
 
 </script>

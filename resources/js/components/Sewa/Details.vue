@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>datail penyewa</h1>
+      
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-7">
@@ -103,12 +103,12 @@
                             <h4>keterangan:</h4>
                             <h6> {{sewa.keterangan}}</h6>
                             <hr>
-
-                            <a class="btn btn-primary btn-block" >Edit</a>
+                            <router-link :to="{name: 'SewaEdit', params: { id: sewa.S_id }}"
+                            class="btn btn-primary btn-block">Edit</router-link>
                             <hr>
-                           
-                                <button type="submit" class="btn btn-danger btn-block" name='delete'>Delete</button>
-                        
+                            <button
+                                    class="btn btn-danger btn-block"
+                                    @click="deleteData(sewa.S_id)">Delete</button>
                         </div>
                         <div class="card-footer text-center">
 
@@ -123,12 +123,9 @@
 
 <script>
     export default {
-
-        data() {
+    data() {
             return {
                 sewa: {},
-                msg: '',
-                s: ''
             }
         },
         created() {
@@ -138,8 +135,32 @@
             details() {
                 this.axios.get('/api/sewa/' + this.$route.params.id)
                     .then(response => {
-                        this.sewa = response.data;
+                        this.sewa = response.data; 
                     });
+            },
+            deleteData(id) {
+                this
+                    .$swal
+                    .fire({
+                        title: 'hapus penyewa?',
+                        text: "gak ada fitur undo lho.",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#BF2222FF',
+                        cancelButtonColor: '#A1A1A1FF',
+                        confirmButtonText: 'Delete',
+                        cancelButtonText: 'Batal'
+                    })
+                    .then((result) => {
+                        if (result.value) {
+                            let uri = `/api/sewa/${id}`;
+                            this
+                                .axios
+                                .delete(uri)
+                                .then(this.$router.push({path: '/vue/sewa'}))
+                                .catch();
+                        }
+                    })
             },
         }
     }
