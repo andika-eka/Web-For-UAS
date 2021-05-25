@@ -17,6 +17,8 @@ window.Form = Form;
 let Fire = new Vue();
 window.Fire = Fire;
 
+import moment from 'moment';
+moment().format(); 
 import VueAxios from 'vue-axios';
 import VueRouter from 'vue-router';
 import axios from 'axios';
