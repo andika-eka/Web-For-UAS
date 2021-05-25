@@ -145,7 +145,7 @@ class SewaController extends Controller
             $Sewa->harga = $request->harga;
             $Sewa->keterangan = $request->keterangan;
             $Sewa->user_id = $request->user_id;;
-            $Sewa->user_id = 1;
+            $Sewa->admin_id = 1;
             $Sewa->save();    
             return response()->json([
                 'success' => true,

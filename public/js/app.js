@@ -2476,6 +2476,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2489,6 +2496,7 @@ __webpack_require__.r(__webpack_exports__);
         harga: "",
         dari: "",
         sampai: "",
+        user_id: "",
         keterangan: ""
       })
     };
@@ -2497,16 +2505,18 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.axios.get('/api/sewa/' + this.$route.params.id).then(function (response) {
-      _this.sewa = response.data;
-      _this.form.nama = response.data.nama;
-      _this.form.NIK = response.data.NIK;
-      _this.form.email = response.data.email;
-      _this.form.no_unit = response.data.no_unit;
-      _this.form.tlp = response.data.tlp;
-      _this.form.harga = response.data.harga;
-      _this.form.dari = response.data.dari;
-      _this.form.sampai = response.data.sampai;
-      _this.form.keterangan = response.data.keterangan;
+      console.log(response.data);
+      _this.sewa = response.data.user;
+      _this.form.nama = response.data.user.nama;
+      _this.form.NIK = response.data.user.NIK;
+      _this.form.email = response.data.user.email;
+      _this.form.no_unit = response.data.user.no_unit;
+      _this.form.tlp = response.data.user.tlp;
+      _this.form.harga = response.data.user.harga;
+      _this.form.dari = response.data.user.dari;
+      _this.form.sampai = response.data.user.sampai;
+      _this.form.user_id = response.data.user.user_id;
+      _this.form.keterangan = response.data.user.keterangan;
     });
   },
   methods: {
@@ -43730,7 +43740,7 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label col-sm-3",
-                          attrs: { for: "no_unit" }
+                          attrs: { for: "user_id" }
                         },
                         [_vm._v("Id User:")]
                       ),
@@ -43746,7 +43756,7 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { type: "number", id: "no_unit" },
+                          attrs: { type: "number", id: "user_id" },
                           domProps: { value: _vm.form.user_id },
                           on: {
                             input: function($event) {
@@ -44598,6 +44608,41 @@ var render = function() {
                                 return
                               }
                               _vm.$set(_vm.form, "sampai", $event.target.value)
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "control-label col-sm-3",
+                          attrs: { for: "user_id" }
+                        },
+                        [_vm._v("Id User:")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col " }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.user_id,
+                              expression: "form.user_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "number", id: "user_id" },
+                          domProps: { value: _vm.form.user_id },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "user_id", $event.target.value)
                             }
                           }
                         })

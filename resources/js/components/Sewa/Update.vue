@@ -68,6 +68,13 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label class="control-label col-sm-3" for='user_id'>Id User:</label>
+                                    <div class="col ">
+                                        <input type="number" class="form-control" id='user_id' v-model="form.user_id">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label class="control-label col-sm-3" for='keterangan'>keterangan:</label>
                                     <div class="col">
                                         <input type="text" class="form-control" id='keterangan'
@@ -107,6 +114,7 @@
                     harga: "",
                     dari: "",
                     sampai: "",
+                    user_id: "",
                     keterangan: ""
                 })
             }
@@ -114,16 +122,18 @@
         created() {
             this.axios.get('/api/sewa/' + this.$route.params.id)
                     .then(response => {
-                        this.sewa = response.data;
-                        this.form.nama = response.data.nama;
-                        this.form.NIK = response.data.NIK;
-                        this.form.email = response.data.email;
-                        this.form.no_unit = response.data.no_unit;
-                        this.form.tlp = response.data.tlp;
-                        this.form.harga = response.data.harga;
-                        this.form.dari = response.data.dari;
-                        this.form.sampai = response.data.sampai;
-                        this.form.keterangan = response.data.keterangan;
+                        console.log(response.data)
+                        this.sewa = response.data.user;
+                        this.form.nama = response.data.user.nama;
+                        this.form.NIK = response.data.user.NIK;
+                        this.form.email = response.data.user.email;
+                        this.form.no_unit = response.data.user.no_unit;
+                        this.form.tlp = response.data.user.tlp;
+                        this.form.harga = response.data.user.harga;
+                        this.form.dari = response.data.user.dari;
+                        this.form.sampai = response.data.user.sampai;
+                        this.form.user_id = response.data.user.user_id;
+                        this.form.keterangan = response.data.user.keterangan;
                         
                     });
                     
