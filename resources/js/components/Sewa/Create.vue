@@ -66,7 +66,12 @@
                                         <input type="date" class="form-control" id='sampai' v-model="form.sampai">
                                     </div>
                                 </div>
-
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='no_unit'>Id User:</label>
+                                    <div class="col ">
+                                        <input type="number" class="form-control" id='no_unit' v-model="form.user_id">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for='keterangan'>keterangan:</label>
                                     <div class="col">
@@ -108,6 +113,7 @@
                     harga: "",
                     dari: "",
                     sampai: "",
+                    user_id: "",
                     keterangan: ""
                 })
             }

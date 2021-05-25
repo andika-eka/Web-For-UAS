@@ -2042,6 +2042,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2054,6 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
         harga: "",
         dari: "",
         sampai: "",
+        user_id: "",
         keterangan: ""
       })
     };
@@ -2080,6 +2086,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -43694,6 +43730,41 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label col-sm-3",
+                          attrs: { for: "no_unit" }
+                        },
+                        [_vm._v("Id User:")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col " }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.user_id,
+                              expression: "form.user_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "number", id: "no_unit" },
+                          domProps: { value: _vm.form.user_id },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "user_id", $event.target.value)
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "control-label col-sm-3",
                           attrs: { for: "keterangan" }
                         },
                         [_vm._v("keterangan:")]
@@ -43814,14 +43885,16 @@ var render = function() {
             [
               _c("div", { staticClass: "card-header" }, [
                 _c("h3", { staticClass: "font-weight-light my-4" }, [
-                  _vm._v("No unit " + _vm._s(_vm.sewa.no_unit))
+                  _vm._v("No unit " + _vm._s(_vm.sewa.user.no_unit))
                 ]),
                 _vm._v(" "),
                 _c("table", [
                   _c("tr", [
                     _vm._m(0),
                     _vm._v(" "),
-                    _c("td", [_c("h6", [_vm._v(": " + _vm._s(_vm.sewa.name))])])
+                    _c("td", [
+                      _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.admin.name))])
+                    ])
                   ])
                 ])
               ]),
@@ -43830,14 +43903,14 @@ var render = function() {
                 "div",
                 { staticClass: "card-body" },
                 [
-                  _c("h4", [_vm._v("indenfitas")]),
+                  _c("h4", [_vm._v("akun user")]),
                   _vm._v(" "),
                   _c("table", { staticStyle: { width: "100%" } }, [
                     _c("tr", [
                       _vm._m(1),
                       _vm._v(" "),
                       _c("td", [
-                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.nama))])
+                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.user_id))])
                       ])
                     ]),
                     _vm._v(" "),
@@ -43845,29 +43918,59 @@ var render = function() {
                       _vm._m(2),
                       _vm._v(" "),
                       _c("td", [
-                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.NIK))])
+                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.name))])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.U_email))])
                       ])
                     ])
                   ]),
                   _vm._v(" "),
                   _c("hr"),
                   _vm._v(" "),
-                  _c("h4", [_vm._v("contact")]),
+                  _c("h4", [_vm._v("indenfitas penghuni")]),
                   _vm._v(" "),
                   _c("table", { staticStyle: { width: "100%" } }, [
-                    _c("tr", [
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.email))])
-                      ])
-                    ]),
-                    _vm._v(" "),
                     _c("tr", [
                       _vm._m(4),
                       _vm._v(" "),
                       _c("td", [
-                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.tlp))])
+                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.nama))])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.NIK))])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("h4", [_vm._v("contact penhuni")]),
+                  _vm._v(" "),
+                  _c("table", { staticStyle: { width: "100%" } }, [
+                    _c("tr", [
+                      _vm._m(6),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.email))])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _vm._m(7),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.tlp))])
                       ])
                     ])
                   ]),
@@ -43878,26 +43981,28 @@ var render = function() {
                   _vm._v(" "),
                   _c("table", { staticStyle: { width: "100%" } }, [
                     _c("tr", [
-                      _vm._m(5),
+                      _vm._m(8),
                       _vm._v(" "),
                       _c("td", [
-                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.dari))])
+                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.dari))])
                       ])
                     ]),
                     _vm._v(" "),
                     _c("tr", [
-                      _vm._m(6),
+                      _vm._m(9),
                       _vm._v(" "),
                       _c("td", [
-                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.sampai))])
+                        _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.sampai))])
                       ])
                     ]),
                     _vm._v(" "),
                     _c("tr", [
-                      _vm._m(7),
+                      _vm._m(10),
                       _vm._v(" "),
                       _c("td", [
-                        _c("h6", [_vm._v(": Rp. " + _vm._s(_vm.sewa.harga))])
+                        _c("h6", [
+                          _vm._v(": Rp. " + _vm._s(_vm.sewa.user.harga))
+                        ])
                       ])
                     ])
                   ]),
@@ -43906,7 +44011,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("h4", [_vm._v("keterangan:")]),
                   _vm._v(" "),
-                  _c("h6", [_vm._v(" " + _vm._s(_vm.sewa.keterangan))]),
+                  _c("h6", [_vm._v(" " + _vm._s(_vm.sewa.user.keterangan))]),
                   _vm._v(" "),
                   _c("hr"),
                   _vm._v(" "),
@@ -43915,7 +44020,10 @@ var render = function() {
                     {
                       staticClass: "btn btn-primary btn-block",
                       attrs: {
-                        to: { name: "SewaEdit", params: { id: _vm.sewa.S_id } }
+                        to: {
+                          name: "SewaEdit",
+                          params: { id: _vm.sewa.user.S_id }
+                        }
                       }
                     },
                     [_vm._v("Edit")]
@@ -43929,7 +44037,7 @@ var render = function() {
                       staticClass: "btn btn-danger btn-block",
                       on: {
                         click: function($event) {
-                          return _vm.deleteData(_vm.sewa.S_id)
+                          return _vm.deleteData(_vm.sewa.user.S_id)
                         }
                       }
                     },
@@ -43952,7 +44060,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [_c("h6", [_vm._v("dibuat oleh")])])
+    return _c("td", [_c("h6", [_vm._v("admin pembuat")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("id ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("nama ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("E-mail ")])])
   },
   function() {
     var _vm = this

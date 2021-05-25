@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\DB;
 class sewa extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama', 'NIK', 'email', 'tlp', 'no_unit','harga','dari','sampai','keterangan', 'user_id', 'update_user_id'];
-   
-    static function get_api(){
+    protected $fillable = ['nama', 'NIK', 'sewas.email', 'tlp', 'no_unit','harga','dari','sampai','keterangan', 'user_id', 'admin_id'];
+    static function get_user(){
         $result = DB::table('sewas')
-        ->select("*" ,'sewas.id AS S_id')//temporary solution
+        ->select('sewas.id AS S_id', 'nama', 'NIK', 'sewas.email', 'tlp', 'no_unit', 'harga', 'dari', 'sampai',  'user_id', 'keterangan',
+        'users.name', 'users.email AS U_email' )//temporary solution
         ->join('users', "sewas.user_id", "=", "users.id");
         return $result;
 
@@ -22,5 +22,13 @@ class sewa extends Model
         soo yaa... YOLO*/
 
         //ps other model might have the same problem
+    }
+    static function get_admin(){
+        $result = DB::table('sewas')
+        ->select('sewas.id AS S_id', 'nama', 'NIK', 'sewas.email', 'tlp', 'no_unit', 'harga', 'dari', 'sampai', 'keterangan',
+        'users.name' )//temporary solution
+        ->join('users', "sewas.admin_id", "=", "users.id");
+        return $result;
+
     }
 }

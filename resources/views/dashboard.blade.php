@@ -5,12 +5,12 @@
     <meta http-equiv="refresh" content="0;/dashboard">
     <title>SB Admin</title>
     <script language="javascript">
-        window.location.href = "/dashboard"
+        window.location.href = "/vue/dashboard"
     </script>
 </head>
 
 <body>
-    Go to <a href="/dashboard">/dist/index.html</a>
+   
 </body>
 
 </html>

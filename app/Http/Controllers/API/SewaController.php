@@ -17,7 +17,7 @@ class SewaController extends Controller
     public function index()
     {
         $data['title'] = "daftar sewa";
-        $data['sewa'] = sewa::get_api()->paginate(100);
+        $data['sewa'] = sewa::get_user()->paginate(100);
         return response()->json($data);
     }
 
@@ -66,12 +66,11 @@ class SewaController extends Controller
                 'sampai' => request('sampai'),
                 'no_unit' => request('no_unit'),
                 'harga' => request('harga'),
-                'user_id' =>1,//major problem
-                'update_user_id' =>1,
+                'user_id' =>request('user_id'),
+                'admin_id' =>1,
                 'keterangan' => request('keterangan'),
             ]);
 
-     
             return response()->json([
                 'success' => true,
                 'notif'=>'penyewa berhasil di daftarkan',                
@@ -82,8 +81,6 @@ class SewaController extends Controller
                 'notif'=>'Error',               
             ], 422);
         } 
-
-       
     }
 
     /**
@@ -92,11 +89,12 @@ class SewaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function show($id)
-     {
+    public function show($id)
+    {
         
          // this api also can be called for sewa edit
-        $data = sewa::get_api()->where('sewas.id',$id)->first();
+        $data['user'] = sewa::get_user()->where('sewas.id',$id)->first();
+        $data['admin'] = sewa::get_admin()->where('sewas.id',$id)->first();
         return response()->json($data);
     }//just use edit
 
@@ -124,7 +122,7 @@ class SewaController extends Controller
     public function update(Request $request, $id)
     {
         //
-       
+    
         $validasi = $this->validate($request, [
             'nama'          => 'required',
             'NIK'           => 'required',
@@ -133,7 +131,6 @@ class SewaController extends Controller
             'dari'          => 'required|date|before:sampai',
             'sampai'        => 'required|date',
             'harga'         => 'required|numeric|min:50000',
-           
         ]);
 
         try{
@@ -147,7 +144,8 @@ class SewaController extends Controller
             $Sewa->no_unit = $request->no_unit;
             $Sewa->harga = $request->harga;
             $Sewa->keterangan = $request->keterangan;
-            $Sewa->update_user_id = 2;
+            $Sewa->user_id = $request->user_id;;
+            $Sewa->user_id = 1;
             $Sewa->save();    
             return response()->json([
                 'success' => true,

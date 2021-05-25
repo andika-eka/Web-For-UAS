@@ -16,7 +16,8 @@ class CreateBayarsTable extends Migration
         Schema::create('bayars', function (Blueprint $table) {
             $table->id();
             $table->integer("id_sewa");
-            $table->integer("bulan")->default(1);
+            $table->date('dari');
+            $table->date('sampai');
             $table->text("keterangan")->nullable();
             $table->integer('id_user');
             $table->timestamps();
