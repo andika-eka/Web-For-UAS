@@ -9,17 +9,21 @@ use Illuminate\Support\Facades\DB;
 class bayar extends Model
 {
     use HasFactory;
-    protected $fillable = ['id_sewa', 'bulan','keterangan', 'id_user'];
-    public function sewa(){
-        return $this->belongsTo('App\Models\sewa', 'id_sewa');
-    }
-    public function user(){
-      return  $this->belongsTo('App\Models\User', 'id_user');
-    }
-    static function get_api(){
+    protected $fillable = ['id_sewa', 'dari', 'sampai', 'keterangan', 'id_admin'];
+    
+    static function get_sewa(){
       $result = DB::table('bayars')
-      ->join('users', "bayars.id_user", "=", "users.id")
-      ->join('sewas', "bayars.id_sewa", '=', "sewas.id");
+      ->select("bayars.id", 'id_sewa', 'bayars.dari', 'bayars.sampai', 'bayars.keterangan', 'user_id', 'nama', 
+      'users.name', 'users.email', 'no_unit', 'harga', 'bayars.created_at')
+      ->join('sewas', "bayars.id_sewa", '=', "sewas.id")
+      ->join('users', "sewas.user_id", "=", "users.id");
       return $result;
+    }
+
+    static function get_admin(){
+      $result = DB::table('bayars')
+      ->select("bayars.id",  'id_admin', 'name', 'email' )
+      ->join('users', "bayars.id_admin", "=", "users.id");
+      return $result;
+    }
   }
-}
