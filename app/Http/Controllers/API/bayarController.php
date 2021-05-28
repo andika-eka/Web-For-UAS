@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\bayar;
+use App\Models\sewa;
 use Illuminate\Http\Request;
 
 class bayarController extends Controller
@@ -16,7 +17,7 @@ class bayarController extends Controller
     public function index()
     {
         //
-        $data['title'] = "daftar sewa";
+      
         $data['bayar'] = bayar::get_sewa()->paginate(100);
         $data['admin'] = bayar::get_admin()->paginate(100);
         return response()->json($data);
@@ -30,6 +31,9 @@ class bayarController extends Controller
     public function create()
     {
         //
+        $data = sewa::all();
+        return response()->json($data);
+
     }
 
     /**
@@ -58,7 +62,7 @@ class bayarController extends Controller
 
             return response()->json([
                 'success' => true,
-                'notif'=>'pemabayaran berhasil dicatat',                
+                'notif'=>'pembayaran berhasil dicatat',                
             ]);
         }catch (\Exception $e) {
             return response()->json([
@@ -88,10 +92,10 @@ class bayarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    // public function edit($id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -103,6 +107,31 @@ class bayarController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validasi = $this->validate($request, [
+            'id_sewa'   => 'required',
+            'dari'      => 'required',
+            'sampai'    => 'required',
+        ]);
+
+        try{
+            $bayar = bayar::find($id);
+            $bayar->id_sewa = $request->id_sewa;
+            $bayar->dari = $request->dari;
+            $bayar->sampai = $request->sampai;
+            $bayar->id_admin = 1;
+            $bayar->keterangan = $request->keterangan;
+            $bayar->save();
+
+            return response()->json([
+                'success' => true,
+                'notif'=>'pembayaran berhasil diupdate',                
+            ]);
+        }catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'notif'=>'Error',               
+            ], 422);
+        } 
     }
 
     /**
