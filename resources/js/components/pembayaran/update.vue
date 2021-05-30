@@ -5,7 +5,7 @@
                 <div class="col-lg-7">
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
-                            <h3 class="font-weight-light my-4">Daftarkan pembayaran</h3>
+                            <h3 class="font-weight-light my-4">edit pembayaran</h3>
                         </div>
                         <div class="card-body">
                             <form class=" form-horizontal" @submit.prevent="saveData()">
@@ -59,6 +59,7 @@
     export default {
         data() {
             return {
+                bayar:{},
                 form: new Form({
                     id_sewa: "",
                     dari: "",
@@ -67,9 +68,21 @@
                 })
             }
         },
+        created(){
+            this.axios.get('/api/bayar/' + this.$route.params.id)
+            .then(response => {
+                this.bayar = response.data.user;
+                this.form.id_sewa = response.data.user.id_sewa;
+                this.form.dari = response.data.user.dari;
+                this.form.sampai = response.data.user.sampai;
+                this.form.keterangan = response.data.user.keterangan;
+            }
+            
+            )
+        },
         methods: {
             saveData() {
-                this.form.post('/api/bayar')
+                this.form.put('/api/bayar/'+this.$route.params.id)
                     .then(this.$router.push({
                         path: '/vue/pembayaran'
                     }))

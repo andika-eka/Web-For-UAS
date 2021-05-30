@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\sewa;
-use App\Models\User;
+use App\Models\bayar;
 use Illuminate\Support\Facades\Auth;
 
 class SewaController extends Controller
@@ -53,7 +53,6 @@ class SewaController extends Controller
             'dari'          => 'required|date|before:sampai',
             'sampai'        => 'required|date',
             'harga'         => 'required|numeric|min:50000',
-           
         ]);
 
         try{
@@ -95,6 +94,7 @@ class SewaController extends Controller
          // this api also can be called for sewa edit
         $data['user'] = sewa::get_user()->where('sewas.id',$id)->first();
         $data['admin'] = sewa::get_admin()->where('sewas.id',$id)->first();
+        $data["pembayaran"] = bayar::get_sewa()->where('id_sewa',$id)->paginate(10);
         return response()->json($data);
     }//just use edit
 
@@ -181,4 +181,6 @@ class SewaController extends Controller
             ], 422);
         } 
     }
+
+    
 }
