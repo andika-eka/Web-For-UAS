@@ -1,13 +1,81 @@
 <template>
     <div>
-        <h1>create pembayaran</h1>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                        <div class="card-header">
+                            <h3 class="font-weight-light my-4">Daftarkan pembayaran</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class=" form-horizontal" @submit.prevent="saveData()">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='id_sewa'>id sewa:</label>
+                                    <div class="col ">
+                                        <input type="number" class="form-control" id='id_sewa' v-model="form.id_sewa"
+                                            min="1" max="300">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='dari'>dari</label>
+                                    <div class="col ">
+                                        <input type="date" class="form-control" id='dari' v-model="form.dari">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='sampai'>sampai</label>
+                                    <div class="col ">
+                                        <input type="date" class="form-control" id='sampai' v-model="form.sampai">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for='keterangan'>keterangan:</label>
+                                    <div class="col">
+                                        <input type="text" class="form-control" id='keterangan'
+                                            v-model="form.keterangan">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button type="submit" class="btn btn-primary" name='Create'>Create</button>
+                                        <router-link to="/vue/dashboard" class="btn btn-secondary" name='cancel'>cancel
+                                        </router-link>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="card-footer text-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
     </div>
 </template>
 
 <script>
     export default {
-
+        data() {
+            return {
+                form: new Form({
+                    id_sewa: "",
+                    dari: "",
+                    sampai: "",
+                    keterangan: ""
+                })
+            }
+        },
+        methods: {
+            saveData() {
+                this.form.post('/api/bayar')
+                    .then(this.$router.push({
+                        path: '/vue/pembayaran'
+                    }))
+                    .catch();
+            }
+        }
     }
 
 </script>

@@ -7,6 +7,8 @@ import SewaEdit from './components/Sewa/Update';
 
 import PebayaranList from './components/pembayaran/List';
 import PembayaranCreate from './components/pembayaran/Create';
+import pembayaranDetail from './components/pembayaran/details';
+import pembayaranEdit from './components/pembayaran/update';
 
 export const routes = [{
         name: 'dashboard',
@@ -45,4 +47,16 @@ export const routes = [{
         path: '/vue/pembayaran/create',
         component: PembayaranCreate
     },
+
+    {
+        name: 'pembayaranDetails',
+        path: '/vue/pembayaran/detail/:id',
+        component: pembayaranDetail
+    },
+    {
+        name: 'PembayaranEdit',
+        path: '/vue/pembayaran/edit/:id',
+        component: pembayaranEdit
+    },
+    
 ];

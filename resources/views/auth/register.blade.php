@@ -37,15 +37,21 @@
 
                                         <div class="form-group">
                                             <label class="small mb-1" for="email">Email</label>
-                                            <input class="form-control py-4" id="email" type="email" name="email" 
-                                            :value="old('email')" required  />
+                                            <input class="form-control py-4" id="email" type="email" name="email"
+                                                :value="old('email')" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" id="is_Admin" type="checkbox" name="is_Admin" />
+                                                <label class="custom-control-label" for="is_Admin">user is Admin</label>
+                                            </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="small mb-1" for="password">Password</label>
-                                                    <input class="form-control py-4" id="password" type="password" name="password" 
-                                                    required autocomplete="new-password"/>
+                                                    <input class="form-control py-4" id="password" type="password"
+                                                        name="password" required autocomplete="new-password" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -53,18 +59,18 @@
                                                     <label class="small mb-1" for="password_confirmation">Confirm
                                                         Password</label>
                                                     <input class="form-control py-4" id="password_confirmation"
-                                                    type="password" name="password_confirmation" required autocomplete="new-password" />
+                                                        type="password" name="password_confirmation" required
+                                                        autocomplete="new-password" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group mt-4 mb-0">
-                                            <button class="btn btn-primary btn-block" name="register">Create Account</button>
+                                            <button class="btn btn-primary btn-block" name="register">Create
+                                                Account</button>
                                         </div>
-                                        </form>
+                                    </form>
                                 </div>
-                                <div class="card-footer text-center">
-                                    <div class="small"><a href="{{ route('login') }}">Have an account? Go to login</a></div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -90,6 +96,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="/js/scripts.js"></script>
+    <!-- <script>
+        $('#checkbox-value').text($('#flexCheckDefault').val());
+
+        $("#flexCheckDefault").on('change', function () {
+            if ($(this).is(':checked')) {
+                $(this).attr('value', 'true');
+            } else {
+                $(this).attr('value', 'false');
+            }
+
+            $('#checkbox-value').text($('#flexCheckDefault').val());
+        });
+
+    </script> -->
 </body>
 
 </html>

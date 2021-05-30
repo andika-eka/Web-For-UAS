@@ -1,13 +1,13 @@
 <?php
+
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\sewa;
 use App\Models\bayar;
-use Illuminate\Support\Facades\Auth;
+use App\Models\sewa;
+use Illuminate\Http\Request;
 
-class SewaController extends Controller
+class bayarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,10 @@ class SewaController extends Controller
      */
     public function index()
     {
-        $data['title'] = "daftar sewa";
-        $data['sewa'] = sewa::get_user()->paginate(100);
+        //
+      
+        $data['bayar'] = bayar::get_sewa()->paginate(100);
+        $data['admin'] = bayar::get_admin()->paginate(100);
         return response()->json($data);
     }
 
@@ -29,8 +31,9 @@ class SewaController extends Controller
     public function create()
     {
         //
-        $data['title']= 'daftarkan penyewa';
+        $data = sewa::all();
         return response()->json($data);
+
     }
 
     /**
@@ -41,38 +44,25 @@ class SewaController extends Controller
      */
     public function store(Request $request)
     {
-     /*check your fucking request json
-     could save you tons of headache
-                    -me who an idiot
-     */  
+        //
         $validasi = $this->validate($request, [
-            'nama'          => 'required',
-            'NIK'           => 'required',
-            'tlp'           => 'required',
-            'no_unit'       => 'required',
-            'dari'          => 'required|date|before:sampai',
-            'sampai'        => 'required|date',
-            'harga'         => 'required|numeric|min:50000',
+            'id_sewa'   => 'required',
+            'dari'      => 'required',
+            'sampai'    => 'required',
         ]);
 
         try{
-            $response = sewa::create([
-                'nama' => request('nama'),
-                'NIK' => request('NIK'),
-                'tlp' => request('tlp'),
-                'email' => request('email'),
+            $response = bayar::create([
+                'id_sewa' => request('id_sewa'),
                 'dari' => request('dari'),
                 'sampai' => request('sampai'),
-                'no_unit' => request('no_unit'),
-                'harga' => request('harga'),
-                'user_id' =>request('user_id'),
-                'admin_id' =>1,
+                'id_admin' =>1,
                 'keterangan' => request('keterangan'),
             ]);
 
             return response()->json([
                 'success' => true,
-                'notif'=>'penyewa berhasil di daftarkan',                
+                'notif'=>'pembayaran berhasil dicatat',                
             ]);
         }catch (\Exception $e) {
             return response()->json([
@@ -90,13 +80,11 @@ class SewaController extends Controller
      */
     public function show($id)
     {
-        
-         // this api also can be called for sewa edit
-        $data['user'] = sewa::get_user()->where('sewas.id',$id)->first();
-        $data['admin'] = sewa::get_admin()->where('sewas.id',$id)->first();
-        $data["pembayaran"] = bayar::get_sewa()->where('id_sewa',$id)->paginate(10);
+        //
+        $data['user'] = bayar::get_sewa()->where('bayars.id',$id)->first();
+        $data['admin'] = bayar::get_admin()->where('bayars.id',$id)->first();
         return response()->json($data);
-    }//just use edit
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -106,11 +94,8 @@ class SewaController extends Controller
      */
     // public function edit($id)
     // {
-    //     // this api also can be called for sewa detail
-    //     $data = sewa::get_api()->where('sewas.id',$id)->first();
-    //     return response()->json($data);
+    //     //
     // }
-    
 
     /**
      * Update the specified resource in storage.
@@ -122,34 +107,24 @@ class SewaController extends Controller
     public function update(Request $request, $id)
     {
         //
-    
         $validasi = $this->validate($request, [
-            'nama'          => 'required',
-            'NIK'           => 'required',
-            'tlp'           => 'required',
-            'no_unit'       => 'required',
-            'dari'          => 'required|date|before:sampai',
-            'sampai'        => 'required|date',
-            'harga'         => 'required|numeric|min:50000',
+            'id_sewa'   => 'required',
+            'dari'      => 'required',
+            'sampai'    => 'required',
         ]);
 
         try{
-            $Sewa = sewa::find($id);
-            $Sewa->nama = $request->nama;
-            $Sewa->NIK = $request->NIK;
-            $Sewa->tlp = $request->tlp;
-            $Sewa->email = $request->email;
-            $Sewa->dari = $request->dari;
-            $Sewa->sampai = $request->sampai;
-            $Sewa->no_unit = $request->no_unit;
-            $Sewa->harga = $request->harga;
-            $Sewa->keterangan = $request->keterangan;
-            $Sewa->user_id = $request->user_id;;
-            $Sewa->admin_id = 1;
-            $Sewa->save();    
+            $bayar = bayar::find($id);
+            $bayar->id_sewa = $request->id_sewa;
+            $bayar->dari = $request->dari;
+            $bayar->sampai = $request->sampai;
+            $bayar->id_admin = 1;
+            $bayar->keterangan = $request->keterangan;
+            $bayar->save();
+
             return response()->json([
                 'success' => true,
-                'notif'=>'berhasil update data',                
+                'notif'=>'pembayaran berhasil diupdate',                
             ]);
         }catch (\Exception $e) {
             return response()->json([
@@ -168,7 +143,7 @@ class SewaController extends Controller
     public function destroy($id)
     {
         try{
-            $data = sewa::find($id);       //cari id yang dipencet
+            $data = bayar::find($id);       //cari id yang dipencet
             $data-> delete();                  //delete id tersebut
             return response()->json([
                 'success' => true,
@@ -181,6 +156,4 @@ class SewaController extends Controller
             ], 422);
         } 
     }
-
-    
 }

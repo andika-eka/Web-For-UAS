@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\SewaController;
 use App\Http\Controllers\API\DashboardController;
+use App\Http\Controllers\API\bayarController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::resource('sewa', SewaController::class);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-
+Route::resource('bayar', bayarController::class);
