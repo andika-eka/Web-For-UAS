@@ -38,7 +38,7 @@
 
                         </div>
                         <div class="card-body">
-                            <h4>akun user</h4>
+                            <!-- <h4>akun user</h4>
                             <table style="width:100%">
                                 <tr>
                                     <td>
@@ -64,8 +64,8 @@
                                         <h6>: {{user.email}}</h6>
                                     </td>
                                 </tr>
-                            </table>
-                            <hr>
+                            </table> -->
+                            <!-- <hr> -->
                             <h4>jankang waktu:</h4>
                             <table style="width:100%">
                                 <tr>
@@ -97,7 +97,7 @@
                             <h4>keterangan:</h4>
                             <h6> {{user.keterangan}}</h6>
                             <hr>
-                            <router-link :to="{name: 'PembayaranEdit', params: { id: user.user_id}}"
+                            <router-link :to="{name: 'PembayaranEdit', params: { id: user.id}}"
                             class="btn btn-primary btn-block">Edit</router-link>
                             <hr>
                             <button

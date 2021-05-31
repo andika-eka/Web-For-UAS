@@ -20,7 +20,7 @@
                             <th>dari</th>
                             <th>sampai</th>
                             <th>harga</th>
-                            <th>user</th>
+                            <!-- <th>user</th> -->
                             <th>-</th>
                         </tr>
                     </thead>
@@ -32,7 +32,7 @@
                             <th>dari</th>
                             <th>sampai</th>
                             <th>harga</th>
-                            <th>user</th>
+                            <!-- <th>user</th> -->
                             <th>-</th>
                         </tr>
                     </tfoot>
@@ -44,7 +44,7 @@
                             <td>{{ item.dari }}</td>
                             <td>{{ item.sampai }}</td>
                             <td>{{ item.harga }}</td>
-                            <td>{{ item.name }}</td>
+                            <!-- <td>{{ item.name }}</td> -->
 
                             <td>
                                 <router-link :to="{name: 'SewaDetails', params: { id: item.S_id }}"

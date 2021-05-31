@@ -19,7 +19,7 @@ class CreateBayarsTable extends Migration
             $table->date('dari');
             $table->date('sampai');
             $table->text("keterangan")->nullable();
-            $table->integer('id_user');
+            // $table->integer('id_user');
             $table->integer('id_admin');
             $table->timestamps();
         });

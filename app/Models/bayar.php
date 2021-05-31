@@ -13,10 +13,10 @@ class bayar extends Model
     
     static function get_sewa(){
       $result = DB::table('bayars')
-      ->select("bayars.id", 'id_sewa', 'bayars.dari', 'bayars.sampai', 'bayars.keterangan', 'user_id', 'nama', 
-      'users.name', 'users.email', 'no_unit', 'harga', 'bayars.created_at')
-      ->join('sewas', "bayars.id_sewa", '=', "sewas.id")
-      ->join('users', "sewas.user_id", "=", "users.id");
+      ->select("bayars.id", 'id_sewa', 'bayars.dari', 'bayars.sampai', 'bayars.keterangan',  'nama', 
+      'no_unit', 'harga', 'bayars.created_at')
+      ->join('sewas', "bayars.id_sewa", '=', "sewas.id");
+  
       return $result;
     }
 

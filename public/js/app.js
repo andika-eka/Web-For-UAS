@@ -2059,7 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
         harga: "",
         dari: "",
         sampai: "",
-        user_id: "",
+        // user_id: "",
         keterangan: ""
       })
     };
@@ -2543,7 +2543,7 @@ __webpack_require__.r(__webpack_exports__);
         harga: "",
         dari: "",
         sampai: "",
-        user_id: "",
+        // user_id: "",
         keterangan: ""
       })
     };
@@ -44397,41 +44397,6 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label col-sm-3",
-                          attrs: { for: "user_id" }
-                        },
-                        [_vm._v("Id User:")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col " }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.user_id,
-                              expression: "form.user_id"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "number", id: "user_id" },
-                          domProps: { value: _vm.form.user_id },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "user_id", $event.target.value)
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "control-label col-sm-3",
                           attrs: { for: "keterangan" }
                         },
                         [_vm._v("keterangan:")]
@@ -44581,45 +44546,13 @@ var render = function() {
                   "div",
                   { staticClass: "card-body" },
                   [
-                    _c("h4", [_vm._v("akun user")]),
-                    _vm._v(" "),
-                    _c("table", { staticStyle: { width: "100%" } }, [
-                      _c("tr", [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("h6", [
-                            _vm._v(": " + _vm._s(_vm.sewa.user.user_id))
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _vm._m(2),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.name))])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _vm._m(3),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("h6", [
-                            _vm._v(": " + _vm._s(_vm.sewa.user.U_email))
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
                     _c("hr"),
                     _vm._v(" "),
                     _c("h4", [_vm._v("indenfitas penghuni")]),
                     _vm._v(" "),
                     _c("table", { staticStyle: { width: "100%" } }, [
                       _c("tr", [
-                        _vm._m(4),
+                        _vm._m(1),
                         _vm._v(" "),
                         _c("td", [
                           _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.nama))])
@@ -44627,7 +44560,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("tr", [
-                        _vm._m(5),
+                        _vm._m(2),
                         _vm._v(" "),
                         _c("td", [
                           _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.NIK))])
@@ -44641,7 +44574,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("table", { staticStyle: { width: "100%" } }, [
                       _c("tr", [
-                        _vm._m(6),
+                        _vm._m(3),
                         _vm._v(" "),
                         _c("td", [
                           _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.email))])
@@ -44649,7 +44582,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("tr", [
-                        _vm._m(7),
+                        _vm._m(4),
                         _vm._v(" "),
                         _c("td", [
                           _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.tlp))])
@@ -44663,7 +44596,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("table", { staticStyle: { width: "100%" } }, [
                       _c("tr", [
-                        _vm._m(8),
+                        _vm._m(5),
                         _vm._v(" "),
                         _c("td", [
                           _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.user.dari))])
@@ -44671,7 +44604,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("tr", [
-                        _vm._m(9),
+                        _vm._m(6),
                         _vm._v(" "),
                         _c("td", [
                           _c("h6", [
@@ -44681,7 +44614,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("tr", [
-                        _vm._m(10),
+                        _vm._m(7),
                         _vm._v(" "),
                         _c("td", [
                           _c("h6", [
@@ -44706,7 +44639,7 @@ var render = function() {
                         attrs: {
                           to: {
                             name: "SewaEdit",
-                            params: { id: _vm.sewa.user.S_id }
+                            params: { id: _vm.sewa.user.id }
                           }
                         }
                       },
@@ -44721,7 +44654,7 @@ var render = function() {
                         staticClass: "btn btn-danger btn-block",
                         on: {
                           click: function($event) {
-                            return _vm.deleteData(_vm.sewa.user.S_id)
+                            return _vm.deleteData(_vm.sewa.user.id)
                           }
                         }
                       },
@@ -44752,7 +44685,7 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "card shadow-lg border-0 rounded-lg mt-5" }, [
-          _vm._m(11),
+          _vm._m(8),
           _vm._v(" "),
           _c(
             "div",
@@ -44774,9 +44707,9 @@ var render = function() {
                   attrs: { id: "dataTable", width: "100%", cellspacing: "0" }
                 },
                 [
-                  _vm._m(12),
+                  _vm._m(9),
                   _vm._v(" "),
-                  _vm._m(13),
+                  _vm._m(10),
                   _vm._v(" "),
                   _c(
                     "tbody",
@@ -44830,24 +44763,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [_c("h6", [_vm._v("admin pembuat")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("h6", [_vm._v("id ")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("h6", [_vm._v("nama ")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("h6", [_vm._v("E-mail ")])])
   },
   function() {
     var _vm = this
@@ -45020,8 +44935,6 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(item.harga))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.name))]),
-                      _vm._v(" "),
                       _c(
                         "td",
                         [
@@ -45083,8 +44996,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("harga")]),
         _vm._v(" "),
-        _c("th", [_vm._v("user")]),
-        _vm._v(" "),
         _c("th", [_vm._v("-")])
       ])
     ])
@@ -45106,8 +45017,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("sampai")]),
         _vm._v(" "),
         _c("th", [_vm._v("harga")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("user")]),
         _vm._v(" "),
         _c("th", [_vm._v("-")])
       ])
@@ -45443,41 +45352,6 @@ var render = function() {
                                 return
                               }
                               _vm.$set(_vm.form, "sampai", $event.target.value)
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "control-label col-sm-3",
-                          attrs: { for: "user_id" }
-                        },
-                        [_vm._v("Id User:")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col " }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.user_id,
-                              expression: "form.user_id"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "number", id: "user_id" },
-                          domProps: { value: _vm.form.user_id },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "user_id", $event.target.value)
                             }
                           }
                         })
@@ -46014,8 +45888,6 @@ var render = function() {
                     return _c("tr", { key: id }, [
                       _c("td", [_vm._v(_vm._s(item.id))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.name))]),
-                      _vm._v(" "),
                       _c("td", [
                         _vm._v(
                           _vm._s(item.nama) + "\n                            "
@@ -46085,8 +45957,6 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("id")]),
         _vm._v(" "),
-        _c("th", [_vm._v("user")]),
-        _vm._v(" "),
         _c("th", [_vm._v("nama")]),
         _vm._v(" "),
         _c("th", [_vm._v("no unit")]),
@@ -46110,8 +45980,6 @@ var staticRenderFns = [
     return _c("tfoot", { staticClass: "thead-light" }, [
       _c("tr", [
         _c("th", [_vm._v("id")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("user")]),
         _vm._v(" "),
         _c("th", [_vm._v("nama")]),
         _vm._v(" "),
@@ -46212,41 +46080,11 @@ var render = function() {
                 "div",
                 { staticClass: "card-body" },
                 [
-                  _c("h4", [_vm._v("akun user")]),
-                  _vm._v(" "),
-                  _c("table", { staticStyle: { width: "100%" } }, [
-                    _c("tr", [
-                      _vm._m(2),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("h6", [_vm._v(": " + _vm._s(_vm.user.user_id))])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("h6", [_vm._v(": " + _vm._s(_vm.user.name))])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _vm._m(4),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("h6", [_vm._v(": " + _vm._s(_vm.user.email))])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
                   _c("h4", [_vm._v("jankang waktu:")]),
                   _vm._v(" "),
                   _c("table", { staticStyle: { width: "100%" } }, [
                     _c("tr", [
-                      _vm._m(5),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("td", [
                         _c("h6", [_vm._v(": " + _vm._s(_vm.user.dari))])
@@ -46254,7 +46092,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("tr", [
-                      _vm._m(6),
+                      _vm._m(3),
                       _vm._v(" "),
                       _c("td", [
                         _c("h6", [_vm._v(": " + _vm._s(_vm.user.sampai))])
@@ -46262,7 +46100,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("tr", [
-                      _vm._m(7),
+                      _vm._m(4),
                       _vm._v(" "),
                       _c("td", [
                         _c("h6", [_vm._v(": Rp. " + _vm._s(_vm.user.harga))])
@@ -46285,7 +46123,7 @@ var render = function() {
                       attrs: {
                         to: {
                           name: "PembayaranEdit",
-                          params: { id: _vm.user.user_id }
+                          params: { id: _vm.user.id }
                         }
                       }
                     },
@@ -46330,24 +46168,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [_c("h6", [_vm._v("tanggal pembayaran")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("h6", [_vm._v("id ")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("h6", [_vm._v("nama ")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("h6", [_vm._v("E-mail ")])])
   },
   function() {
     var _vm = this

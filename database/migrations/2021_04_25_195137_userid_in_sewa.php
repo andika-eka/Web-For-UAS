@@ -16,7 +16,7 @@ class UseridInSewa extends Migration
         Schema::table('sewas', function (Blueprint $table) {
             //
             $table->integer('admin_id');
-            $table->integer('user_id');
+            // $table->integer('user_id');
         });
     }
 
@@ -31,7 +31,7 @@ class UseridInSewa extends Migration
             //
             $table->dropColumn('admin_id');
 
-            $table->dropColumn('user_id');
+            // $table->dropColumn('user_id');
         });
     }
 }

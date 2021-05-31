@@ -21,7 +21,7 @@
                             </table>
                         </div>
                         <div class="card-body">
-                            <h4>akun user</h4>
+                            <!-- <h4>akun user</h4>
                             <table style="width:100%">
                                 <tr>
                                     <td>
@@ -47,7 +47,7 @@
                                         <h6>: {{sewa.user.U_email}}</h6>
                                     </td>
                                 </tr>
-                            </table>
+                            </table> -->
                             <hr>
                             <h4>indenfitas penghuni</h4>
                             <table style="width:100%">
@@ -120,10 +120,10 @@
                             <h4>keterangan:</h4>
                             <h6> {{sewa.user.keterangan}}</h6>
                             <hr>
-                            <router-link :to="{name: 'SewaEdit', params: { id: sewa.user.S_id }}"
+                            <router-link :to="{name: 'SewaEdit', params: { id: sewa.user.id }}"
                                 class="btn btn-primary btn-block">Edit</router-link>
                             <hr>
-                            <button class="btn btn-danger btn-block" @click="deleteData(sewa.user.S_id)">Delete</button>
+                            <button class="btn btn-danger btn-block" @click="deleteData(sewa.user.id)">Delete</button>
                         </div>
                         <div class="card-footer text-center">
                         </div>

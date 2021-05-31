@@ -16,7 +16,7 @@
                     <thead class="thead-light">
                         <tr>
                             <th>id</th>
-                            <th>user</th>
+                            <!-- <th>user</th> -->
                             <th>nama</th>
                             <th>no unit</th>
                             <th>dari</th>
@@ -29,7 +29,7 @@
                     <tfoot class="thead-light">
                         <tr>
                             <th>id</th>
-                            <th>user</th>
+                            <!-- <th>user</th> -->
                             <th>nama</th>
                             <th>no unit</th>
                             <th>dari</th>
@@ -42,7 +42,7 @@
                     <tbody>
                         <tr v-for="(item, id) in pembayaran" :key="id">
                             <td>{{ item.id }}</td>
-                            <td>{{ item.name }}</td>
+                            <!-- <td>{{ item.name }}</td> -->
                             <td>{{ item.nama }}
                                 <!-- <router-link :to="{name: 'SewaDetails', params: { id: item.id_sewa }}"
                                     class="stretched-link">{{ item.nama }}</router-link> -->
