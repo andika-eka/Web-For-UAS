@@ -17,7 +17,7 @@ class SewaController extends Controller
     public function index()
     {
         $data['title'] = "daftar sewa";
-        $data['sewa'] = sewa::get_user()->paginate(100);
+        $data['sewa'] = sewa::get_admin()->paginate(100);
         return response()->json($data);
     }
 
@@ -65,7 +65,6 @@ class SewaController extends Controller
                 'sampai' => request('sampai'),
                 'no_unit' => request('no_unit'),
                 'harga' => request('harga'),
-                'user_id' =>request('user_id'),
                 'admin_id' =>1,
                 'keterangan' => request('keterangan'),
             ]);
@@ -92,7 +91,7 @@ class SewaController extends Controller
     {
         
          // this api also can be called for sewa edit
-        $data['user'] = sewa::get_user()->where('sewas.id',$id)->first();
+        $data['user'] = sewa::find($id);
         $data['admin'] = sewa::get_admin()->where('sewas.id',$id)->first();
         $data["pembayaran"] = bayar::get_sewa()->where('id_sewa',$id)->paginate(10);
         return response()->json($data);
@@ -144,7 +143,7 @@ class SewaController extends Controller
             $Sewa->no_unit = $request->no_unit;
             $Sewa->harga = $request->harga;
             $Sewa->keterangan = $request->keterangan;
-            $Sewa->user_id = $request->user_id;;
+    
             $Sewa->admin_id = 1;
             $Sewa->save();    
             return response()->json([

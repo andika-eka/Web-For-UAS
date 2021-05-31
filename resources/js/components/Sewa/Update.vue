@@ -67,12 +67,12 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label class="control-label col-sm-3" for='user_id'>Id User:</label>
                                     <div class="col ">
                                         <input type="number" class="form-control" id='user_id' v-model="form.user_id">
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for='keterangan'>keterangan:</label>
@@ -114,7 +114,7 @@
                     harga: "",
                     dari: "",
                     sampai: "",
-                    user_id: "",
+                    // user_id: "",
                     keterangan: ""
                 })
             }
