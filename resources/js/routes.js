@@ -44,7 +44,7 @@ export const routes = [{
     },
     {
         name: 'PembayaranCreate',
-        path: '/vue/pembayaran/create',
+        path: '/vue/pembayaran/create/:id',
         component: PembayaranCreate
     },
 

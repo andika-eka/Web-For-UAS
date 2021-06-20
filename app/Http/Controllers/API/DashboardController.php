@@ -15,7 +15,10 @@ class DashboardController extends Controller
     public function dashboard(){
         $data['title'] = 'dashboard';
         $sewa =sewa::all();
-        $data['Jum_sewa'] = sewa::count();
+        $data['active'] = sewa::whereDate('dari','<=', Carbon::today())
+                            ->whereDate('sampai','>=', Carbon::today())->count ();
+        $data['expired'] = sewa::whereDate('sampai','<=', Carbon::today())->count ();
+        $data['reserved'] = sewa::whereDate('dari','>=', Carbon::today())->count ();
             
         $belumSelesai = sewa::whereDate('sampai','>', Carbon::now())->sum('harga');
         $belumMulai = sewa::whereDate('dari','>', Carbon::now())->sum('harga');

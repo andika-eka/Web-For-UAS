@@ -7,6 +7,7 @@ use App\Models\bayar;
 use App\Models\sewa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class bayarController extends Controller
 {
@@ -29,13 +30,13 @@ class bayarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-        $data = sewa::all();
-        return response()->json($data);
+    // public function create($id)
+    // {
+    //     //
+    //     $data = sewa::find($id);
+    //     return response()->json($data);
 
-    }
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -49,17 +50,22 @@ class bayarController extends Controller
         $validasi = $this->validate($request, [
             'id_sewa'   => 'required',
             'dari'      => 'required',
-            'sampai'    => 'required',
+            'bulan'    => 'required',
         ]);
-
+        
+        $sampai = Carbon::createFromFormat('Y-m-d',request('dari'))->addMonths(request('bulan'));
         try{
             $response = bayar::create([
                 'id_sewa' => request('id_sewa'),
                 'dari' => request('dari'),
-                'sampai' => request('sampai'),
+                'sampai' => $sampai,
                 'id_admin' =>1,
-                'keterangan' => request('keterangan'),
+                'keterangan' => request('keterangan')
             ]);
+
+            $Sewa = sewa::find(request('id_sewa'));
+            $Sewa->lastpaid =  $sampai;
+            $Sewa->save(); 
 
             return response()->json([
                 'success' => true,
@@ -111,17 +117,22 @@ class bayarController extends Controller
         $validasi = $this->validate($request, [
             'id_sewa'   => 'required',
             'dari'      => 'required',
-            'sampai'    => 'required',
+            'bulan'    => 'required',
         ]);
-
+        
+        $sampai = Carbon::createFromFormat('Y-m-d',request('dari'))->addMonths(request('bulan'));
         try{
             $bayar = bayar::find($id);
             $bayar->id_sewa = $request->id_sewa;
             $bayar->dari = $request->dari;
-            $bayar->sampai = $request->sampai;
+            $bayar->sampai = $sampai;
             $bayar->id_admin = 1;
             $bayar->keterangan = $request->keterangan;
             $bayar->save();
+
+            $Sewa = sewa::find(request('id_sewa'));
+            $Sewa->lastpaid =  $sampai;
+            $Sewa->save(); 
 
             return response()->json([
                 'success' => true,

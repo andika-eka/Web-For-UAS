@@ -9,12 +9,30 @@
                     <div class="card border-primary mb-3 shadow" style=" height :200px; font-size: 20px;">
                         <div class="card-header">jumlah penyewa</div>
                         <div class="card-body text-primary text-center">
-                            <h2 class="card-title "> {{res.Jum_sewa}}</h2>
-                            <hr>
+                            <div class="card-title row">
+                                <div class="col-sm"  style="padding:10px;">
+                                    <div class="bg-success text-white ">
+                                        <h6>active</h6>
+                                        {{res.active}}
+                                    </div>
+                                </div>
+                                <div class="col-sm " style="padding:10px;">
+                                    <div class="bg-danger text-white ">
+                                        <h6>expired</h6>
+                                        {{res.expired}}
+                                    </div>
+                                </div>
+                                <div class="col-sm " style="padding:10px;">
+                                    <div class="bg-secondary text-white ">
+                                        <h6>reserved</h6>
+                                        {{res.reserved}}
+                                    </div>
+                                </div>
+                            </div>
                             <router-link type="button" class="btn btn-outline-primary" to="/vue/sewa/create"> Daftarkan
                                 Penyewa</router-link>
-                            <router-link type="button" class="btn btn-outline-primary" to="/vue/pembayaran/create"> buat
-                                pembayaran</router-link>
+                            <!-- <router-link type="button" class="btn btn-outline-primary" to="/vue/pembayaran/create"> buat
+                                pembayaran</router-link> -->
                         </div>
                     </div>
                 </div>

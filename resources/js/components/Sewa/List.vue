@@ -16,6 +16,7 @@
                         <tr>
                             <th>id</th>
                             <th>nama</th>
+                            <th>status</th> 
                             <th>no unit</th>
                             <th>dari</th>
                             <th>sampai</th>
@@ -28,27 +29,65 @@
                         <tr>
                             <th>id</th>
                             <th>nama</th>
+                            <th>status</th> 
                             <th>no unit</th>
                             <th>dari</th>
                             <th>sampai</th>
                             <th>harga</th>
-                            <!-- <th>user</th> -->
                             <th>-</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr v-for="(item, S_id) in sewa.sewa.data" :key="S_id">
+                        <tr v-for="(item, S_id) in active.data" :key="S_id">
                             <td>{{ item.S_id }}</td>
                             <td>{{ item.nama }}</td>
+                            <td > <div class="badge rounded-pill bg-success">active </div> </td>
                             <td>{{ item.no_unit }}</td>
+                            
                             <td>{{ item.dari }}</td>
                             <td>{{ item.sampai }}</td>
-                            <td>{{ item.harga }}</td>
-                            <!-- <td>{{ item.name }}</td> -->
-
+                            <td>Rp.{{ item.harga }}</td>
+                            
                             <td>
                                 <router-link :to="{name: 'SewaDetails', params: { id: item.S_id }}"
-                                    class="badge rounded-pill bg-primary">details</router-link>
+                                    class="badge badge-primary">details</router-link>
+                                <router-link :to="{name: 'PembayaranCreate', params: { id: item.S_id }}"type="button" class="badge badge-success" > buat
+                                pembayaran</router-link>
+                            </td>
+                        </tr>
+                        <tr v-for="(item, S_id) in expired.data" :key="S_id">
+                            <td>{{ item.S_id }}</td>
+                            <td>{{ item.nama }}</td>
+                            <td > <div class="badge rounded-pill bg-danger">expired </div> </td>
+                            <td>{{ item.no_unit }}</td>
+                            
+                            <td>{{ item.dari }}</td>
+                            <td>{{ item.sampai }}</td>
+                            <td>Rp.{{ item.harga }}</td>
+                            
+                            <td>
+                                <router-link :to="{name: 'SewaDetails', params: { id: item.S_id }}"
+                                    class="badge badge-primary">details</router-link>
+                                     <router-link :to="{name: 'PembayaranCreate', params: { id: item.S_id }}"type="button" class="badge badge-success" > buat
+                                pembayaran</router-link>
+                                    
+                            </td>
+                        </tr>
+                        <tr v-for="(item, S_id) in reserved.data" :key="S_id">
+                            <td>{{ item.S_id }}</td>
+                            <td>{{ item.nama }}</td>
+                            <td > <div class="badge rounded-pill bg-secondary">reserved </div> </td>
+                            <td>{{ item.no_unit }}</td>
+                            
+                            <td>{{ item.dari }}</td>
+                            <td>{{ item.sampai }}</td>
+                            <td>Rp.{{ item.harga }}</td>
+                            
+                            <td>
+                                <router-link :to="{name: 'SewaDetails', params: { id: item.S_id }}"
+                                    class="badge badge-primary">details</router-link>
+                                     <router-link :to="{name: 'PembayaranCreate', params: { id: item.S_id }}"type="button" class="badge badge-success" > buat
+                                pembayaran</router-link>
                             </td>
                         </tr>
 
@@ -66,7 +105,9 @@
     export default {
         data() {
             return {
-                sewa: {},
+                active: {},
+                expired: {},
+                reserved: {},
                 msg: '',
                 s: ''
             }
@@ -78,7 +119,9 @@
             table(page = 1) {
                 this.axios.get('/api/sewa?page=' + page + '&s=' + this.s)
                     .then(response => {
-                        this.sewa = response.data;
+                        this.active = response.data.active;
+                        this.expired = response.data.expired;
+                        this.reserved = response.data.reserved;
                     });
             },
         }

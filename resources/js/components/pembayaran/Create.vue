@@ -9,13 +9,40 @@
                         </div>
                         <div class="card-body">
                             <form class=" form-horizontal" @submit.prevent="saveData()">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-3" for='id_sewa'>id sewa:</label>
-                                    <div class="col ">
-                                        <input type="number" class="form-control" id='id_sewa' v-model="form.id_sewa"
-                                            min="1" max="300">
-                                    </div>
-                                </div>
+                                <table style="width:100%">
+                                <tr>
+                                    <td>
+                                        <h6>nama </h6>
+                                    </td>
+                                    <td>
+                                        <h6>: {{sewa.nama}}</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6>dari </h6>
+                                    </td>
+                                    <td>
+                                        <h6>: {{sewa.dari}}</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6>sampai </h6>
+                                    </td>
+                                    <td>
+                                        <h6>: {{sewa.sampai}}</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6>harga</h6>
+                                    </td>
+                                    <td>
+                                        <h6>: Rp. {{sewa.harga}}</h6>
+                                    </td>
+                                </tr>
+                            </table>
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for='dari'>dari</label>
                                     <div class="col ">
@@ -23,9 +50,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-3" for='sampai'>sampai</label>
+                                    <label class="control-label col-sm-3" for='bulan'>lama (bulan):</label>
                                     <div class="col ">
-                                        <input type="date" class="form-control" id='sampai' v-model="form.sampai">
+                                        <input type="number" class="form-control" id='bulan' v-model="form.bulan"
+                                            min="1" max="300">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -59,15 +87,26 @@
     export default {
         data() {
             return {
+                sewa:{},
                 form: new Form({
                     id_sewa: "",
                     dari: "",
-                    sampai: "",
+                    bulan: "",
                     keterangan: ""
                 })
             }
         },
+        created() {
+            this.details();
+        },
         methods: {
+            details() {
+                this.axios.get('/api/sewa/' + this.$route.params.id)
+                    .then(response => {
+                        this.sewa = response.data.user;
+                        this.form.id_sewa = response.data.user.id;
+                    });
+            },
             saveData() {
                 this.form.post('/api/bayar')
                     .then(this.$router.push({

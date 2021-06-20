@@ -15,6 +15,7 @@ class bayar extends Model
       $result = DB::table('bayars')
       ->select("bayars.id", 'id_sewa', 'bayars.dari', 'bayars.sampai', 'bayars.keterangan',  'nama', 
       'no_unit', 'harga', 'bayars.created_at')
+      ->selectRaw( 'ROUND(datediff(bayars.sampai, bayars.dari)/30) as duration')
       ->join('sewas', "bayars.id_sewa", '=', "sewas.id");
   
       return $result;

@@ -2392,10 +2392,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      sewa: {},
+      active: {},
+      expired: {},
+      reserved: {},
       msg: '',
       s: ''
     };
@@ -2409,7 +2450,9 @@ __webpack_require__.r(__webpack_exports__);
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.axios.get('/api/sewa?page=' + page + '&s=' + this.s).then(function (response) {
-        _this.sewa = response.data;
+        _this.active = response.data.active;
+        _this.expired = response.data.expired;
+        _this.reserved = response.data.reserved;
       });
     }
   }
@@ -2624,6 +2667,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2714,18 +2775,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      sewa: {},
       form: new Form({
         id_sewa: "",
         dari: "",
-        sampai: "",
+        bulan: "",
         keterangan: ""
       })
     };
   },
+  created: function created() {
+    this.details();
+  },
   methods: {
+    details: function details() {
+      var _this = this;
+
+      this.axios.get('/api/sewa/' + this.$route.params.id).then(function (response) {
+        _this.sewa = response.data.user;
+        _this.form.id_sewa = response.data.user.id;
+      });
+    },
     saveData: function saveData() {
       this.form.post('/api/bayar').then(this.$router.push({
         path: '/vue/pembayaran'
@@ -2747,6 +2848,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
 //
 //
 //
@@ -2861,7 +2965,7 @@ __webpack_require__.r(__webpack_exports__);
           var uri = "/api/bayar/".concat(id);
 
           _this2.axios["delete"](uri).then(_this2.$router.push({
-            path: '/vue/pembaran'
+            path: '/vue/pembayaran'
           }))["catch"]();
         }
       });
@@ -3113,6 +3217,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3120,7 +3225,7 @@ __webpack_require__.r(__webpack_exports__);
       form: new Form({
         id_sewa: "",
         dari: "",
-        sampai: "",
+        bulan: "",
         keterangan: ""
       })
     };
@@ -3132,7 +3237,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.bayar = response.data.user;
       _this.form.id_sewa = response.data.user.id_sewa;
       _this.form.dari = response.data.user.dari;
-      _this.form.sampai = response.data.user.sampai;
+      _this.form.bulan = response.data.user.duration;
       _this.form.keterangan = response.data.user.keterangan;
     });
   },
@@ -3306,7 +3411,7 @@ var routes = [{
   component: _components_pembayaran_List__WEBPACK_IMPORTED_MODULE_5__.default
 }, {
   name: 'PembayaranCreate',
-  path: '/vue/pembayaran/create',
+  path: '/vue/pembayaran/create/:id',
   component: _components_pembayaran_Create__WEBPACK_IMPORTED_MODULE_6__.default
 }, {
   name: 'pembayaranDetails',
@@ -44921,42 +45026,179 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "tbody",
-                  _vm._l(_vm.sewa.sewa.data, function(item, S_id) {
-                    return _c("tr", { key: S_id }, [
-                      _c("td", [_vm._v(_vm._s(item.S_id))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.nama))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.no_unit))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.dari))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.sampai))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.harga))]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "badge rounded-pill bg-primary",
-                              attrs: {
-                                to: {
-                                  name: "SewaDetails",
-                                  params: { id: item.S_id }
+                  [
+                    _vm._l(_vm.active.data, function(item, S_id) {
+                      return _c("tr", { key: S_id }, [
+                        _c("td", [_vm._v(_vm._s(item.S_id))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.nama))]),
+                        _vm._v(" "),
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.no_unit))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.dari))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.sampai))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Rp." + _vm._s(item.harga))]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "badge badge-primary",
+                                attrs: {
+                                  to: {
+                                    name: "SewaDetails",
+                                    params: { id: item.S_id }
+                                  }
                                 }
-                              }
-                            },
-                            [_vm._v("details")]
-                          )
-                        ],
-                        1
-                      )
-                    ])
-                  }),
-                  0
+                              },
+                              [_vm._v("details")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "badge badge-success",
+                                attrs: {
+                                  to: {
+                                    name: "PembayaranCreate",
+                                    params: { id: item.S_id }
+                                  },
+                                  type: "button"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  " buat\n                            pembayaran"
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _vm._l(_vm.expired.data, function(item, S_id) {
+                      return _c("tr", { key: S_id }, [
+                        _c("td", [_vm._v(_vm._s(item.S_id))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.nama))]),
+                        _vm._v(" "),
+                        _vm._m(3, true),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.no_unit))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.dari))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.sampai))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Rp." + _vm._s(item.harga))]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "badge badge-primary",
+                                attrs: {
+                                  to: {
+                                    name: "SewaDetails",
+                                    params: { id: item.S_id }
+                                  }
+                                }
+                              },
+                              [_vm._v("details")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "badge badge-success",
+                                attrs: {
+                                  to: {
+                                    name: "PembayaranCreate",
+                                    params: { id: item.S_id }
+                                  },
+                                  type: "button"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  " buat\n                            pembayaran"
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _vm._l(_vm.reserved.data, function(item, S_id) {
+                      return _c("tr", { key: S_id }, [
+                        _c("td", [_vm._v(_vm._s(item.S_id))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.nama))]),
+                        _vm._v(" "),
+                        _vm._m(4, true),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.no_unit))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.dari))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.sampai))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Rp." + _vm._s(item.harga))]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "badge badge-primary",
+                                attrs: {
+                                  to: {
+                                    name: "SewaDetails",
+                                    params: { id: item.S_id }
+                                  }
+                                }
+                              },
+                              [_vm._v("details")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "badge badge-success",
+                                attrs: {
+                                  to: {
+                                    name: "PembayaranCreate",
+                                    params: { id: item.S_id }
+                                  },
+                                  type: "button"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  " buat\n                            pembayaran"
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    })
+                  ],
+                  2
                 )
               ]
             ),
@@ -44988,6 +45230,8 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("nama")]),
         _vm._v(" "),
+        _c("th", [_vm._v("status")]),
+        _vm._v(" "),
         _c("th", [_vm._v("no unit")]),
         _vm._v(" "),
         _c("th", [_vm._v("dari")]),
@@ -45010,6 +45254,8 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("nama")]),
         _vm._v(" "),
+        _c("th", [_vm._v("status")]),
+        _vm._v(" "),
         _c("th", [_vm._v("no unit")]),
         _vm._v(" "),
         _c("th", [_vm._v("dari")]),
@@ -45019,6 +45265,36 @@ var staticRenderFns = [
         _c("th", [_vm._v("harga")]),
         _vm._v(" "),
         _c("th", [_vm._v("-")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "badge rounded-pill bg-success" }, [
+        _vm._v("active ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "badge rounded-pill bg-danger" }, [
+        _vm._v("expired ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "badge rounded-pill bg-secondary" }, [
+        _vm._v("reserved ")
       ])
     ])
   }
@@ -45501,11 +45777,65 @@ var render = function() {
                   "div",
                   { staticClass: "card-body text-primary text-center" },
                   [
-                    _c("h2", { staticClass: "card-title " }, [
-                      _vm._v(" " + _vm._s(_vm.res.Jum_sewa))
+                    _c("div", { staticClass: "card-title row" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-sm",
+                          staticStyle: { padding: "10px" }
+                        },
+                        [
+                          _c("div", { staticClass: "bg-success text-white " }, [
+                            _c("h6", [_vm._v("active")]),
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(_vm.res.active) +
+                                "\n                                "
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-sm ",
+                          staticStyle: { padding: "10px" }
+                        },
+                        [
+                          _c("div", { staticClass: "bg-danger text-white " }, [
+                            _c("h6", [_vm._v("expired")]),
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(_vm.res.expired) +
+                                "\n                                "
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-sm ",
+                          staticStyle: { padding: "10px" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "bg-secondary text-white " },
+                            [
+                              _c("h6", [_vm._v("reserved")]),
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.res.reserved) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        ]
+                      )
                     ]),
-                    _vm._v(" "),
-                    _c("hr"),
                     _vm._v(" "),
                     _c(
                       "router-link",
@@ -45518,15 +45848,6 @@ var render = function() {
                           " Daftarkan\n                            Penyewa"
                         )
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-outline-primary",
-                        attrs: { type: "button", to: "/vue/pembayaran/create" }
-                      },
-                      [_vm._v(" buat\n                            pembayaran")]
                     )
                   ],
                   1
@@ -45613,43 +45934,37 @@ var render = function() {
                     }
                   },
                   [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "control-label col-sm-3",
-                          attrs: { for: "id_sewa" }
-                        },
-                        [_vm._v("id sewa:")]
-                      ),
+                    _c("table", { staticStyle: { width: "100%" } }, [
+                      _c("tr", [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.nama))])
+                        ])
+                      ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col " }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.id_sewa,
-                              expression: "form.id_sewa"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            id: "id_sewa",
-                            min: "1",
-                            max: "300"
-                          },
-                          domProps: { value: _vm.form.id_sewa },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "id_sewa", $event.target.value)
-                            }
-                          }
-                        })
+                      _c("tr", [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.dari))])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("h6", [_vm._v(": " + _vm._s(_vm.sewa.sampai))])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("h6", [_vm._v(": Rp. " + _vm._s(_vm.sewa.harga))])
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
@@ -45693,9 +46008,9 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label col-sm-3",
-                          attrs: { for: "sampai" }
+                          attrs: { for: "bulan" }
                         },
-                        [_vm._v("sampai")]
+                        [_vm._v("lama (bulan):")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col " }, [
@@ -45704,19 +46019,24 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.sampai,
-                              expression: "form.sampai"
+                              value: _vm.form.bulan,
+                              expression: "form.bulan"
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { type: "date", id: "sampai" },
-                          domProps: { value: _vm.form.sampai },
+                          attrs: {
+                            type: "number",
+                            id: "bulan",
+                            min: "1",
+                            max: "300"
+                          },
+                          domProps: { value: _vm.form.bulan },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.$set(_vm.form, "sampai", $event.target.value)
+                              _vm.$set(_vm.form, "bulan", $event.target.value)
                             }
                           }
                         })
@@ -45816,6 +46136,30 @@ var staticRenderFns = [
         _vm._v("Daftarkan pembayaran")
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("nama ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("dari ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("sampai ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h6", [_vm._v("harga")])])
   }
 ]
 render._withStripped = true
@@ -45900,7 +46244,13 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(item.sampai))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.harga))]),
+                      _c("td", [_vm._v("Rp." + _vm._s(item.harga))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "Rp." + _vm._s(item.harga * item.duration) + ".00"
+                        )
+                      ]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(item.created_at))]),
                       _vm._v(" "),
@@ -45910,7 +46260,7 @@ var render = function() {
                           _c(
                             "button",
                             {
-                              staticClass: "badge rounded-pill bg-danger",
+                              staticClass: "badge bg-danger",
                               on: {
                                 click: function($event) {
                                   return _vm.deleteData(item.id)
@@ -45923,7 +46273,7 @@ var render = function() {
                           _c(
                             "router-link",
                             {
-                              staticClass: "badge rounded-pill bg-primary",
+                              staticClass: "badge  bg-primary",
                               attrs: {
                                 to: {
                                   name: "pembayaranDetails",
@@ -45967,6 +46317,8 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("harga")]),
         _vm._v(" "),
+        _c("th", [_vm._v("total")]),
+        _vm._v(" "),
         _c("th", [_vm._v("waktu pembayaran")]),
         _vm._v(" "),
         _c("th", [_vm._v("-")])
@@ -45990,6 +46342,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("sampai")]),
         _vm._v(" "),
         _c("th", [_vm._v("harga")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("total")]),
         _vm._v(" "),
         _c("th", [_vm._v("waktu pembayaran")]),
         _vm._v(" "),
@@ -46313,9 +46667,9 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label col-sm-3",
-                          attrs: { for: "sampai" }
+                          attrs: { for: "bulan" }
                         },
-                        [_vm._v("sampai")]
+                        [_vm._v("lama (bulan):")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col " }, [
@@ -46324,19 +46678,24 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.sampai,
-                              expression: "form.sampai"
+                              value: _vm.form.bulan,
+                              expression: "form.bulan"
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { type: "date", id: "sampai" },
-                          domProps: { value: _vm.form.sampai },
+                          attrs: {
+                            type: "number",
+                            id: "bulan",
+                            min: "1",
+                            max: "300"
+                          },
+                          domProps: { value: _vm.form.bulan },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.$set(_vm.form, "sampai", $event.target.value)
+                              _vm.$set(_vm.form, "bulan", $event.target.value)
                             }
                           }
                         })

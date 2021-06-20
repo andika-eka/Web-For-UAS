@@ -23,9 +23,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-3" for='sampai'>sampai</label>
+                                    <label class="control-label col-sm-3" for='bulan'>lama (bulan):</label>
                                     <div class="col ">
-                                        <input type="date" class="form-control" id='sampai' v-model="form.sampai">
+                                        <input type="number" class="form-control" id='bulan' v-model="form.bulan"
+                                            min="1" max="300">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -63,7 +64,7 @@
                 form: new Form({
                     id_sewa: "",
                     dari: "",
-                    sampai: "",
+                    bulan: "",
                     keterangan: ""
                 })
             }
@@ -74,7 +75,7 @@
                 this.bayar = response.data.user;
                 this.form.id_sewa = response.data.user.id_sewa;
                 this.form.dari = response.data.user.dari;
-                this.form.sampai = response.data.user.sampai;
+                this.form.bulan = response.data.user.duration;
                 this.form.keterangan = response.data.user.keterangan;
             }
             

@@ -39,7 +39,7 @@ class AuthController extends Controller
             'name'      => $request->json('name'),
             'email'     => $request->json('email'),
             'password'  => bcrypt($request->json('password'))
-            'is admin'  => $request->json('is admin');
+           
         ]);
     }
 }

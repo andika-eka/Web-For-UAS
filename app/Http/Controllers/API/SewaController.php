@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\sewa;
 use App\Models\bayar;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class SewaController extends Controller
 {
@@ -17,7 +18,16 @@ class SewaController extends Controller
     public function index()
     {
         $data['title'] = "daftar sewa";
-        $data['sewa'] = sewa::get_admin()->paginate(100);
+        $data['active'] = sewa::get_admin()
+                        ->whereDate('dari','<=', Carbon::today())
+                        ->whereDate('sampai','>=', Carbon::today())
+                        ->paginate(100);
+        $data['expired'] = sewa::get_admin()
+                        ->whereDate('sampai','<=', Carbon::today())
+                        ->paginate(100);
+        $data['reserved'] = sewa::get_admin()
+                        ->whereDate('dari','>=', Carbon::today())
+                        ->paginate(100);
         return response()->json($data);
     }
 

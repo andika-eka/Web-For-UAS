@@ -22,6 +22,7 @@
                             <th>dari</th>
                             <th>sampai</th>
                             <th>harga</th>
+                            <th>total</th>
                             <th>waktu pembayaran</th>
                             <th>-</th>
                         </tr>
@@ -35,6 +36,7 @@
                             <th>dari</th>
                             <th>sampai</th>
                             <th>harga</th>
+                            <th>total</th>
                             <th>waktu pembayaran</th>
                             <th>-</th>
                         </tr>
@@ -51,12 +53,13 @@
                             <td>{{ item.no_unit }}</td>
                             <td>{{ item.dari }}</td>
                             <td>{{ item.sampai }}</td>
-                            <td>{{ item.harga }}</td>
+                            <td>Rp.{{ item.harga }}</td>
+                            <td>Rp.{{ item.harga * item.duration }}.00</td>
                             <td>{{ item.created_at }}</td>
-                            <td><button class="badge rounded-pill bg-danger"
+                            <td><button class="badge bg-danger"
                                     @click="deleteData(item.id)">Delete</button>
                                 <router-link :to="{name: 'pembayaranDetails', params: { id: item.id }}"
-                                    class="badge rounded-pill bg-primary">details</router-link>
+                                    class="badge  bg-primary">details</router-link>
                             </td>
 
 
@@ -117,7 +120,7 @@
                                 .axios
                                 .delete(uri)
                                 .then(this.$router.push({
-                                    path: '/vue/pembaran'
+                                    path: '/vue/pembayaran'
                                 }))
                                 .catch();
                         }

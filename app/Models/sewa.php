@@ -26,7 +26,7 @@ class sewa extends Model
     static function get_admin(){
         $result = DB::table('sewas')
         ->select('sewas.id AS S_id', 'nama', 'NIK', 'sewas.email', 'tlp', 'no_unit', 'harga', 'dari', 'sampai', 'keterangan',
-        'users.name' )//temporary solution
+        'users.name', 'lastpaid' )//temporary solution
         ->join('users', "sewas.admin_id", "=", "users.id");
         return $result;
 
