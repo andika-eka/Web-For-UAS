@@ -47,24 +47,10 @@
                                     <td>
                                         <h6>: {{user.user_id}}</h6>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h6>nama </h6>
-                                    </td>
-                                    <td>
-                                        <h6>: {{user.name}}</h6>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h6>E-mail </h6>
-                                    </td>
-                                    <td>
-                                        <h6>: {{user.email}}</h6>
-                                    </td>
-                                </tr>
-                            </table> -->
+                                </tr>-->
+                                <h4> {{user.nama}}</h4>
+                                
+                            </table> 
                             <!-- <hr> -->
                             <h4>jankang waktu:</h4>
                             <table style="width:100%">

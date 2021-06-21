@@ -85,7 +85,9 @@
                 pembayaran: {},
                 admin: {},
                 msg: '',
-                s: ''
+                s: '',
+                renderComponent: true,
+
             }
         },
         created() {
@@ -99,6 +101,15 @@
 
                     });
 
+            },
+            forceRerender() {
+            // Remove my-component from the DOM
+                this.renderComponent = false;
+
+                this.$nextTick(() => {
+                // Add the component back in
+                this.renderComponent = true;
+                });
             },
             deleteData(id) {
                 this
@@ -115,13 +126,14 @@
                     })
                     .then((result) => {
                         if (result.value) {
-                            let uri = `/api/bayar/${id}`;
+                            let url = `/api/bayar/${id}`;
                             this
                                 .axios
-                                .delete(uri)
-                                .then(this.$router.push({
-                                    path: '/vue/pembayaran'
-                                }))
+                                .delete(url)
+                                .then(this.$swal
+                                    .fire(
+                                        {title: 'Success!', text: 'Article deleted successfully', icon: 'success', timer: 1000}
+                                    ))
                                 .catch();
                         }
                     })

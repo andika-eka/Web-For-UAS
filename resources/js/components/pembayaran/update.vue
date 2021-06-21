@@ -9,13 +9,40 @@
                         </div>
                         <div class="card-body">
                             <form class=" form-horizontal" @submit.prevent="saveData()">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-3" for='id_sewa'>id sewa:</label>
-                                    <div class="col ">
-                                        <input type="number" class="form-control" id='id_sewa' v-model="form.id_sewa"
-                                            min="1" max="300">
-                                    </div>
-                                </div>
+                                <table style="width:100%">
+                                    <tr>
+                                        <td>
+                                            <h6>nama </h6>
+                                        </td>
+                                        <td>
+                                            <h6>: {{bayar.nama}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6>dari </h6>
+                                        </td>
+                                        <td>
+                                            <h6>: {{bayar.dari}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6>sampai </h6>
+                                        </td>
+                                        <td>
+                                            <h6>: {{bayar.sampai}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6>harga</h6>
+                                        </td>
+                                        <td>
+                                            <h6>: Rp. {{bayar.harga}}</h6>
+                                        </td>
+                                    </tr>
+                                </table>
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for='dari'>dari</label>
                                     <div class="col ">

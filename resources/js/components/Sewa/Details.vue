@@ -138,6 +138,7 @@
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header">
                     <h2 class=" display-6"> history pembayaran</h2>
+                    <router-link :to="{name: 'PembayaranCreate', params: { id:sewa.user.id }}"type="button" class="btn btn-outline-success" > buat pembayaran</router-link>
                 </div>
                 <div class=" table-responsive shadow-lg border rounded " style=" padding-top: 50px;
             padding-right: 50px;
