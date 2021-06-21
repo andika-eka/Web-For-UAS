@@ -24,6 +24,22 @@ class DashboardController extends Controller
         $belumMulai = sewa::whereDate('dari','>', Carbon::now())->sum('harga');
         $data['rev'] = $belumSelesai - $belumMulai;
 
+        $data['late'] =sewa::get_admin()
+                        ->whereDate('lastpaid','<=', Carbon::today())
+                        ->paginate(100);
+        
+        $data['null'] =sewa::get_admin()
+                        ->whereNull('lastpaid')
+                        ->paginate(100);
+        
+        $date = Carbon::now();
+        $date->addDays(5);
+
+        $data['due'] = sewa::get_admin()
+                    ->whereDate('lastpaid','<=', $date)
+                    ->whereDate('lastpaid','>', Carbon::today())
+                    ->paginate(100);        
+
         return response()->json($data);
     }
 }

@@ -2933,7 +2933,8 @@ __webpack_require__.r(__webpack_exports__);
       pembayaran: {},
       admin: {},
       msg: '',
-      s: ''
+      s: '',
+      renderComponent: true
     };
   },
   created: function created() {
@@ -2948,8 +2949,18 @@ __webpack_require__.r(__webpack_exports__);
         _this.pembayaran = response.data.bayar.data;
       });
     },
-    deleteData: function deleteData(id) {
+    forceRerender: function forceRerender() {
       var _this2 = this;
+
+      // Remove my-component from the DOM
+      this.renderComponent = false;
+      this.$nextTick(function () {
+        // Add the component back in
+        _this2.renderComponent = true;
+      });
+    },
+    deleteData: function deleteData(id) {
+      var _this3 = this;
 
       this.$swal.fire({
         title: 'hapus pembayaran?',
@@ -2962,10 +2973,13 @@ __webpack_require__.r(__webpack_exports__);
         cancelButtonText: 'Batal'
       }).then(function (result) {
         if (result.value) {
-          var uri = "/api/bayar/".concat(id);
+          var url = "/api/bayar/".concat(id);
 
-          _this2.axios["delete"](uri).then(_this2.$router.push({
-            path: '/vue/pembayaran'
+          _this3.axios["delete"](url).then(_this3.$swal.fire({
+            title: 'Success!',
+            text: 'Article deleted successfully',
+            icon: 'success',
+            timer: 1000
           }))["catch"]();
         }
       });
